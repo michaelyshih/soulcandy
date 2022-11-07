@@ -58,7 +58,11 @@ function Navigation() {
       </section>
       <section className='purchase-nav'>
         <li>{sessionLinks}</li>
-        <li><i className="fa-solid fa-bag-shopping"></i></li>
+        <li>
+          <Link to="/cart">
+            <i className="fa-solid fa-bag-shopping"></i>
+          </Link>
+        </li>
       </section>
     </nav>
   );

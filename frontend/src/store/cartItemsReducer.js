@@ -27,8 +27,8 @@ export const getItems = (state) => {
     return state.cart_items ? Object.values(state.cart_items) : []
 }
 
-export const getItem = (itemId) => (state) => {
-    return state.cart_items ? state.cart_items[itemId] : null
+export const getItem = (product_id) => (state) => {
+    return state.cart_items ? state.cart_items[product_id] : null
 
 }
 
@@ -68,7 +68,7 @@ export const createItem = (item) => async (dispatch) => {
 }
 
 export const updateItem = (item) => async (dispatch) => {
-    const res = await csrfFetch(`api/cart_items/${item.id}`,{
+    const res = await csrfFetch(`/api/cart_items/${item.id}`,{
         method:"PATCH",
         headers: {"Content-Type":"application/json"},
         body:JSON.stringify(item)
@@ -93,7 +93,7 @@ export default function cartItemsReducer (state={}, action){
         case RECEIVE_ITEMS:
             return {...action.items}
         case RECEIVE_ITEM :
-            return {...state, [action.item.id]: action.item }
+            return {...state, [action.item.name]: action.item }
         case REMOVE_ITEM:
             const newState = {...state}
             delete newState[action.itemId]

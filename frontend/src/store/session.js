@@ -73,8 +73,6 @@ export const login = (user) => async (dispatch) => {
     dispatch(setCurrentUser(data.user));
   };
 
-
-
   const initialState = {
     user: JSON.parse(sessionStorage.getItem("currentUser"))
   };

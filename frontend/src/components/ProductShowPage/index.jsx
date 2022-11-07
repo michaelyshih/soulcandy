@@ -4,13 +4,17 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import {useLocation} from "react-router-dom"
+import { createItem } from "../../store/cartItemsReducer";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
+import { getItem, updateItem} from "../../store/cartItemsReducer";
 import "./ProductShowPage.scss"
 
 export default function ProductShowPage(){
     const dispatch = useDispatch();
     const {productName} = useParams();
     const product = useSelector(getProduct(productName))
+    const {user} = useSelector(state=>state.session)
+    const cartItem = useSelector(getItem(productName))
     // const location = useLocation();
     // console.log(location)
     // const {from} = location.state ? location.state : {}
@@ -61,6 +65,33 @@ export default function ProductShowPage(){
         }
     })
 
+    const handleCart= (e)=>{
+        e.preventDefault();
+        if (user && !cartItem){
+            const newCartItem = {
+                product_id: product.id,
+                user_id: user.id,
+                name: product.name,
+                price: product.price,
+                color: selectedColor,
+                img_url: product.photos[colorKeys[selectedColor][0]],
+                amount:1,
+                full_name: product.full_name
+            }
+            dispatch(createItem(newCartItem))
+        } else if (cartItem){
+            const newCartItem = {
+                ...cartItem,
+                amount: cartItem.amount + 1
+            }
+            dispatch(updateItem(newCartItem))
+        }
+        else {
+            alert("Need to Sign In first")
+        }
+
+    }
+
     if (!selectedColor) setSelectedColor(colorArray[0]) ;
 
     if(!selectedColor) return null
@@ -87,7 +118,7 @@ export default function ProductShowPage(){
                             })}
                         </p>
 
-                        <button>Add item to cart</button>
+                        <button onClick={handleCart}>Add item to cart</button>
                     </div>
                 </div>
 

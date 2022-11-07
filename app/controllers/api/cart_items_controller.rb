@@ -7,8 +7,9 @@ class Api::CartItemsController < ApplicationController
         if @cart_item.save
             render "api/cart_items/show"
         else
-            @messages = @cart_item.errors.full_messages
-            render "api/errors"
+            debugger
+            # @messages = @cart_item.errors.full_messages
+            # render "api/errors/internal_server_error"
         end
     end
 
@@ -17,7 +18,7 @@ class Api::CartItemsController < ApplicationController
 
     def index
         @cart_items = CartItem.where(user_id: params[:user_id])
-        
+
     end
 
     def update
@@ -40,7 +41,7 @@ class Api::CartItemsController < ApplicationController
     end
 
     def cart_params
-        params.require(:cart_item).permit(:user_id, :product_id, :amount, :name, :price, :color)
+        params.require(:cart_item).permit(:user_id, :product_id, :amount, :name, :price, :color, :img_url)
     end
 
 end
