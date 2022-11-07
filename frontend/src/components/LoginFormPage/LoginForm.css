@@ -1,0 +1,29 @@
+.login-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding-top: 70px;
+}
+
+.login-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.create-user-container{
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+.create-user-container:last-child{
+    justify-content: center;
+}

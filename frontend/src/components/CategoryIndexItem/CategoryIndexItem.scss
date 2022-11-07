@@ -1,0 +1,35 @@
+.index-item-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.color-img-container{
+    display: flex;
+    justify-content: center;
+}
+.color-img{
+    // height: auto;
+    height: 40px;
+    width: 40px;
+    background-color: red;
+}
+
+.product-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    p{
+        text-align: center;
+    }
+
+}
+
+.display-img{
+    // height: auto;
+    height: 300px;
+    width: 100%;
+    background-color: blue;
+}

@@ -1,0 +1,39 @@
+/* TODO Add site wide styles */
+
+body{
+    font-family: HelveticaNeueLTPro-Hv,HelveticaNeue-Heavy,"Helvetica Neue Heavy","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+.main-content-container{
+    padding-top: 70px;
+    z-index: -1;
+}
+
+.title-card{
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+    font-size: 50px
+}
+
+h1 {
+    font-weight: 700;
+
+}
+
+button{
+    position: relative;
+    overflow: hidden;
+    height: 2.57143rem;
+    width:10rem;;
+    background-color:#383838;
+    color: white;
+    border-width: 1px;
+
+}
+
+button::after{
+    background-color: #2c2c2c;
+}
+
+
