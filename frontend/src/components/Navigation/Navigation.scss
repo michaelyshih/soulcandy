@@ -1,0 +1,130 @@
+.nav-bar{
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    font-size: 30px;
+    background-color: black;
+    width: -webkit-fill-available;
+    height:70px;
+    list-style: none;
+    color:white;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 100;
+    overflow: visible;
+}
+
+.redirection-section{
+    display: flex;
+    justify-content: space-between;
+    width: 10em;
+    height: 100%;
+}
+
+.logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img{
+        width: 1.5em;
+        height: 1.5em;
+    }
+    h1{
+        padding-left: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.nav-shop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.nav-bar:hover{
+    .shop-dropdown{
+        opacity: 1;
+        // transform: translateY(0) translateZ(0);
+        transform: translate3d(0,100%,0);
+        pointer-events: auto;
+
+    }
+    + .layer{
+        opacity: .5;
+    }
+}
+
+.layer{
+    position: fixed;
+    size: fill;
+    top:70px;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    z-index: 4;
+    opacity: 0;
+    pointer-events: none;
+    // transition: opacity 300ms ease-in-out;
+}
+
+.shop-dropdown{
+    background-color: white;
+    display: flex;
+    color:black;
+    flex-direction: row;
+    // align-items: center;
+    width:100vw;
+    height: fit-content;
+    box-shadow: 0 2px 5px 0 rgb(0, 0, 0, .8);
+    opacity: 0;
+    margin: 0;
+    pointer-events: none;
+    // transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+    transition: .25s ease-in-out;
+    // transform: translateZ(-100px) translateY(-20px);
+    min-width: 160px;
+    padding: 2% 2%;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    transform: translate3d(0,90,0);
+    transition: .25s ease-out;
+    background-color: #fff;
+
+    li{
+        padding: 5px;
+        font-size: 15px;
+    }
+    ul{
+        padding-left: 4%;
+
+        h3{
+            padding-bottom: 7%;
+        }
+    }
+}
+
+#account{
+    font-size: 30px;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.purchase-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: auto;
+    *{
+        padding: 5px;
+    }
+}

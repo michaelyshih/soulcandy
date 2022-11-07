@@ -1,0 +1,67 @@
+.show-bgi{
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+
+    img{
+        height: auto;
+        width: 100%;
+    }
+    div{
+        width: 100%;
+        height: 100%;
+    }
+
+}
+
+.show-bgi-container{
+    display: flex;
+    background-color: black;
+    justify-content: center;
+}
+
+.show-info{
+    height: 100vh;
+    width: 50%;
+    color:white;
+    font-size: 30px;
+    padding-top: 20vh;
+
+    > *{
+        padding: 5px;
+    }
+}
+
+.show-info-container{
+    z-index: 2;
+    padding-right: 45%;
+    width: 45%;
+
+}
+
+.info-tagline{
+    font-size: 50px;
+}
+
+.info-title, .info-price{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.info-split{
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.info-reviews{
+    display: flex;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+// .color-selector{
+
+// }
