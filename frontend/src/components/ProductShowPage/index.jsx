@@ -1,9 +1,7 @@
-// import { useState } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
-import {useLocation} from "react-router-dom"
+import { useParams,useLocation } from "react-router";
 import { createItem } from "../../store/cartItemsReducer";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import { getItem, updateItem} from "../../store/cartItemsReducer";
@@ -14,38 +12,35 @@ export default function ProductShowPage(){
     const {productName} = useParams();
     const product = useSelector(getProduct(productName))
     const {user} = useSelector(state=>state.session)
-    const cartItem = useSelector(getItem(productName))
-    // const location = useLocation();
-    // console.log(location)
-    // const {from} = location.state ? location.state : {}
-    // console.log(from)
-    // let color = from
+
+    const location = useLocation();
+    const preSelectedColor = location.state ? location.state.selectedColor : {}
     const colorArray = [];
-    const [selectedColor, setSelectedColor] = useState()
+    const [selectedColor, setSelectedColor] = useState(preSelectedColor)
+    const cartItem = useSelector(getItem(productName,selectedColor))
 
-    // if (!color){
-    //     color = selectedColor
-    // }
-
-    // const [selected, setSelected] = useState()
 
     useEffect(()=>{
         dispatch(fetchProduct(productName))
     },[productName])
 
-    if (!product || !product.photos){ return null}
-        let colorKeys = {}
-        product.color.split(",").map(color =>
-            [1,2,3,4].map( i =>{
-                const colorKey = `${color.toLowerCase().split(" ").join(".").split("/").join(".")}.${i}.jpg`
-                if (!colorKeys[color]){
-                    colorKeys[color] = [colorKey]
-                } else {
-                    colorKeys[color] = colorKeys[color].concat([colorKey]);
-                }
-                if (!colorArray.includes(color)) colorArray.push(color)
+
+
+    if (!product || !product.photos || !product.details ) return null
+
+    let colorKeys = {}
+    product.color.split(",").map(color =>{
+        if (!colorArray.includes(color)) colorArray.push(color);
+        [1,2,3,4].map( i =>{
+            const colorKey = `${color.toLowerCase().split(" ").join(".").split("/").join(".")}.${i}.jpg`
+            if (!colorKeys[color]){
+                colorKeys[color] = [colorKey]
+            } else {
+                colorKeys[color] = colorKeys[color].concat([colorKey]);
+            }
         })
-    );
+        colorKeys[color] = colorKeys[color].concat([`${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`])
+    });
 
     let details = {}
     product.details.split("\n      ").map((detail,i)=>{
@@ -74,9 +69,9 @@ export default function ProductShowPage(){
                 name: product.name,
                 price: product.price,
                 color: selectedColor,
-                img_url: product.photos[colorKeys[selectedColor][0]],
+                img_url: product.photos[colorKeys[selectedColor][colorKeys[selectedColor].length-1]],
                 amount:1,
-                full_name: product.full_name
+                fullname: product.fullname
             }
             dispatch(createItem(newCartItem))
         } else if (cartItem){
@@ -91,10 +86,10 @@ export default function ProductShowPage(){
         }
 
     }
+    if (Object.keys(selectedColor).length === 0) setSelectedColor(colorArray[0])
+    if (Object.keys(selectedColor).length === 0)return null;
 
-    if (!selectedColor) setSelectedColor(colorArray[0]) ;
-
-    if(!selectedColor) return null
+    // debugger
 
     return (
             <ul className="show-bgi-container">
@@ -122,16 +117,10 @@ export default function ProductShowPage(){
                     </div>
                 </div>
 
-                {/* {product.color.split(",").map(()=>{
-                    return <li className="show-bgi"><img src={product.imgUrls[0]} alt="" /></li>
-                })} */}
-
                 <li className="show-bgi">
-                    {/* <img
-                    // src={`${product.photos[colorKeys[selectedColor][0]]}`}
-                        // }
-                    alt="" /> */}
-                    <div></div>
+                    <img
+                    src={`${product.photos[colorKeys[selectedColor][0]]}`}
+                    alt="" />
                 </li>
             </ul>
     )

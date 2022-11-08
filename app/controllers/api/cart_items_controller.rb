@@ -1,13 +1,13 @@
 class Api::CartItemsController < ApplicationController
     before_action :set_cart, only: %i[ show update destroy ]
     before_action :require_logged_in, only: [:create, :edit, :update]
+
     def create
         @cart_item = CartItem.new(cart_params)
         @cart_item.user_id = current_user.id
         if @cart_item.save
             render "api/cart_items/show"
         else
-            debugger
             # @messages = @cart_item.errors.full_messages
             # render "api/errors/internal_server_error"
         end
@@ -41,7 +41,7 @@ class Api::CartItemsController < ApplicationController
     end
 
     def cart_params
-        params.require(:cart_item).permit(:user_id, :product_id, :amount, :name, :price, :color, :img_url)
+        params.require(:cart_item).permit(:user_id, :product_id, :amount, :name, :price, :color, :img_url, :fullname)
     end
 
 end

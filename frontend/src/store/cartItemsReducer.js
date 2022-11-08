@@ -27,8 +27,15 @@ export const getItems = (state) => {
     return state.cart_items ? Object.values(state.cart_items) : []
 }
 
-export const getItem = (product_id) => (state) => {
-    return state.cart_items ? state.cart_items[product_id] : null
+export const getItem = (productName, selectedColor) => (state) => {
+    // return state.cart_items ? state.cart_items[productName]  : null
+    if (state.cart_items){
+        return Object.values(state.cart_items).find(el=>{
+            return el.color === selectedColor && el.name === productName
+        })
+    } else {
+        return null
+    }
 
 }
 
@@ -93,7 +100,7 @@ export default function cartItemsReducer (state={}, action){
         case RECEIVE_ITEMS:
             return {...action.items}
         case RECEIVE_ITEM :
-            return {...state, [action.item.name]: action.item }
+            return {...state, [action.item.id]: action.item }
         case REMOVE_ITEM:
             const newState = {...state}
             delete newState[action.itemId]

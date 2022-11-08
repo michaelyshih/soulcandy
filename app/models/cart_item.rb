@@ -12,6 +12,7 @@
 #  price      :float            not null
 #  color      :string           not null
 #  img_url    :string
+#  fullname   :string
 #
 class CartItem < ApplicationRecord
 
