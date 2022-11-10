@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { Redirect, useHistory } from "react-router";
 import { fetchItems } from "../../store/cartItemsReducer";
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const history = useHistory();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -25,9 +27,9 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const logout = (e) => {
-    e.preventDefault();
     dispatch(sessionActions.logout());
-    dispatch(fetchItems())
+    dispatch(fetchItems());
+    history.push("/")
   };
 
   return (

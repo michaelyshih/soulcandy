@@ -18,13 +18,14 @@
 
 .show-bgi-container{
     display: flex;
+    flex-direction: column;
     background-color: black;
-    justify-content: center;
+    align-items: center;
 }
 
 .show-info{
-    height: 100vh;
-    width: 50%;
+    height: 30em;
+    width: 15em;
     color:white;
     font-size: 30px;
     padding-top: 20vh;
