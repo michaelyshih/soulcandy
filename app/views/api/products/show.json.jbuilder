@@ -1,5 +1,5 @@
 
-json.extract! @product, :id, :name, :price, :color, :fullname, :details, :created_at, :updated_at
+json.extract! @product, :id, :name, :price, :color, :fullname, :details, :created_at, :updated_at, :numReviews, :avgReviews
 
 product_hash = {}
 # # json.photos @product.photos.map {|photo| url_for(photo) }

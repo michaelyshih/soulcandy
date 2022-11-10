@@ -21,7 +21,20 @@ class Product < ApplicationRecord
     validates :name, uniqueness: true
 
     has_many :cart_items
+    has_many :reviews
 
-    # has_many_attached :photos
     has_many_attached :photos
+
+    def numReviews
+        reviews.count
+    end
+
+    def avgReviews
+        sum = 0
+        reviews.each do |review|
+            sum += review.rating
+        end
+        (sum * 1.0 / numReviews).round(1)
+    end
+
 end

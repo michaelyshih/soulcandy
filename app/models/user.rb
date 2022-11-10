@@ -19,6 +19,7 @@ class User < ApplicationRecord
   before_validation :ensure_session_token
 
   has_many :cart_items
+  has_many :reviews
 
   def self.find_by_credentials(credentials,pw)
     user = URI::MailTo::EMAIL_REGEXP.match(credentials) ? User.find_by(email: credentials) : User.find_by(username: credentials);

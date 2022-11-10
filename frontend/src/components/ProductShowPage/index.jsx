@@ -27,19 +27,19 @@ export default function ProductShowPage(){
 
     useEffect(()=>{
         dispatch(fetchProduct(productName))
-    },[dispatch,productName])
+    },[productName])
 
     useEffect(()=>{
         if(Object.keys(reviews).length !== 0 && (Object.keys(reviews).length !== product.numReviews)){
             dispatch(fetchProduct(productName))
         };
-    },[dispatch,reviews])
+    },[reviews])
 
     useEffect(()=>{
         if (product){
             dispatch(fetchReviews(product.id))
         }
-    },[dispatch,product])
+    },[product])
 
     if (!product || !product.photos || !product.details ) return null
 
@@ -76,7 +76,7 @@ export default function ProductShowPage(){
                 details.split = detail;
                 break;
             default:
-                
+
         }
         return detail
     })
