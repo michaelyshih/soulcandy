@@ -32,7 +32,7 @@ export const fetchProducts = (category,subcategory) => async (dispatch) => {
     if (res.ok){
         const newProducts = await res.json();
         dispatch(receiveProducts(newProducts))
-    } // else redirect
+    } 
 }
 
 export const fetchProduct = (productName) => async (dispatch) => {

@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-// import { useEffect } from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./CartIndexItem.scss"
@@ -11,12 +10,6 @@ export default function CartIndexItem({item}){
 
     const handleAmount = (e) =>{
         e.preventDefault();
-
-        // if (e.target.value > 0 ){
-        //     setNewAmount(e.target.value)
-        // } else if (e.target.value === '0' || e.target.value !== undefined){
-        //     setNewAmount(0)
-        // }
         if (e.target.value === undefined){
             setNewAmount("")
         }

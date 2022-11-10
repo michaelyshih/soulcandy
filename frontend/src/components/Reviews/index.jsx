@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { createReview, updateReview } from "../../store/reviewsReducer";
 import ReactStars from "react-rating-stars-component";
 import "./Review.scss";
-import { useParams } from "react-router";
 import Reviewitem from "../ReviewItem";
 
 export default function Review({reviews , productId}) {
     const dispatch = useDispatch();
-    const {productName} = useParams()
     const [name, setName] = useState("");
     const [body, setBody] = useState("");
     const [rating, setRating] = useState(5);

@@ -28,7 +28,6 @@ export const getItems = (state) => {
 }
 
 export const getItem = (productName, selectedColor) => (state) => {
-    // return state.cart_items ? state.cart_items[productName]  : null
     if (state.cart_items){
         return Object.values(state.cart_items).find(el=>{
             return el.color === selectedColor && el.name === productName

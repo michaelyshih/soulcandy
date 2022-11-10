@@ -1,5 +1,3 @@
-import setCurrentUser from "./session"
-
 async function csrfFetch(url, options = {}) {
     options.headers ||= {};
     options.method ||= "GET";

@@ -8,8 +8,7 @@ import "./CategoryIndex.scss"
 
 export default function CategoryIndex(){
     const dispatch = useDispatch();
-    const {category, subcategory} = useParams(); //mens-jacket
-    //category = "Men's snowboard jacket"
+    const {category, subcategory} = useParams();
     let titleCard
 
     switch(true){

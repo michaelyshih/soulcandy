@@ -27,19 +27,19 @@ export default function ProductShowPage(){
 
     useEffect(()=>{
         dispatch(fetchProduct(productName))
-    },[productName])
+    },[dispatch,productName])
 
     useEffect(()=>{
         if(Object.keys(reviews).length !== 0 && (Object.keys(reviews).length !== product.numReviews)){
             dispatch(fetchProduct(productName))
         };
-    },[reviews])
+    },[dispatch,reviews])
 
     useEffect(()=>{
         if (product){
             dispatch(fetchReviews(product.id))
         }
-    },[product])
+    },[dispatch,product])
 
     if (!product || !product.photos || !product.details ) return null
 
@@ -54,8 +54,10 @@ export default function ProductShowPage(){
             } else {
                 colorKeys[color] = colorKeys[color].concat([colorKey]);
             }
+            return i ;
         })
         colorKeys[color] = colorKeys[color].concat([`${colorTag}.i.jpg`])
+        return color;
     });
 
     let details = {}
@@ -73,7 +75,10 @@ export default function ProductShowPage(){
             case 3:
                 details.split = detail;
                 break;
+            default:
+                
         }
+        return detail
     })
 
     const handleCart= (e)=>{
@@ -106,7 +111,6 @@ export default function ProductShowPage(){
     if (Object.keys(selectedColor).length === 0) setSelectedColor(colorArray[0])
     if (Object.keys(selectedColor).length === 0)return null;
 
-    // debugger
     const ratingsStar = {
         size: 10,
         count: 5,

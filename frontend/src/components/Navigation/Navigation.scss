@@ -47,7 +47,6 @@
 .nav-bar:hover{
     .shop-dropdown{
         opacity: 1;
-        // transform: translateY(0) translateZ(0);
         transform: translate3d(0,100%,0);
         pointer-events: auto;
 
@@ -75,16 +74,11 @@
     display: flex;
     color:black;
     flex-direction: row;
-    // align-items: center;
-    width:100vw;
     height: fit-content;
     box-shadow: 0 2px 5px 0 rgb(0, 0, 0, .8);
     opacity: 0;
     margin: 0;
     pointer-events: none;
-    // transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-    transition: .5s ease-in-out;
-    // transform: translateZ(-100px) translateY(-20px);
     min-width: 160px;
     padding: 2% 2%;
     position: absolute;
@@ -94,7 +88,6 @@
     overflow: hidden;
     transform: translate3d(0,0,0);
     transition: .25s ease-out;
-    background-color: #fff;
 
     li{
         padding: 5px;

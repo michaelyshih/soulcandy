@@ -6,8 +6,6 @@ export default function CategoryIndexitem ({product}) {
 
     const [selectedColor, setSelectedColor] = useState(product.color.split(",")[0])
 
-    // console.log(selectedColor)
-
     const photos = Object.fromEntries(Object.entries(product.photos).filter(([key])=>key.includes("i.jpg")))
 
 
@@ -21,8 +19,6 @@ export default function CategoryIndexitem ({product}) {
                 className="product-link" >
                 <img
                     className="display-img"
-                    // src = {product.photos[color]}
-                    // src="https://soulcandy-seeds-2.s3.us-west-1.amazonaws.com/push-green-i.jpg"
                     src={photos[`${selectedColor.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`]}
                     alt="" />
                 {/* <div className="display-img"></div> */}
@@ -36,7 +32,6 @@ export default function CategoryIndexitem ({product}) {
                             }}
                             className="product-link">
                             <img className="color-img"
-                            // src="https://soulcandy-seeds-2.s3.us-west-1.amazonaws.com/push-green-i.jpg"
                             src={photos[`${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`]}
                             onMouseOver={()=>setSelectedColor(color)}
                             alt="" />

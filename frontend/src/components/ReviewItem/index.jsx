@@ -25,7 +25,7 @@ export default function Reviewitem ({user, setRating, setBody, setName, setEditt
             return (
                 <section className="review-item-edit">
                     <a href="#review-form" onClick={()=>handleEdit()}><i className="fa-regular fa-pen-to-square"></i></a>
-                    <a href="#" onClick={handleDelete}><i className="fa-solid fa-trash-can"></i></a>
+                    <a href="#review-index-item-container" onClick={handleDelete}><i className="fa-solid fa-trash-can"></i></a>
                 </section>
             )
         } else {

@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   products,
   cart_items,
   reviews
-  // need users reducer to avoid error, slices of state in store need reducer
 });
 
 let enhancer;

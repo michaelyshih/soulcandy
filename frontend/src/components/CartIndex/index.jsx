@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
 import { getItems, deleteItem } from "../../store/cartItemsReducer";
 import CartIndexItem from "../CartIndexItem";
 import "./CartIndex.scss"
@@ -29,6 +27,7 @@ export default function CartIndex(){
         e.preventDefault();
         cart_items.map(cart_item=>{
             dispatch(deleteItem(cart_item.id))
+            return cart_item;
         })
     }
 

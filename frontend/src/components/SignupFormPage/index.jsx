@@ -74,7 +74,6 @@ function SignupFormPage() {
         <input
             type="password"
             value={confirmPassword}
-            // onChange={(e) => setConfirmPassword(e.target.value)}
             onChange={(e)=>{setConfirmPassword(e.target.value)}}
             required
           />

@@ -6,7 +6,7 @@ import "./reset.css"
 import './index.scss';
 import App from './App';
 import configureStore from './store';
-import csrfFetch, { restoreCSRF } from './store/csrf';
+import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 import * as productsActions from './store/productsReducer';
 import * as cartItemsActions from './store/cartItemsReducer';

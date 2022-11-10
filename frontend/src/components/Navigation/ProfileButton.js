@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 import { fetchItems } from "../../store/cartItemsReducer";
 import * as sessionActions from '../../store/session';
 
