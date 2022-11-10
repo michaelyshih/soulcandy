@@ -51,9 +51,9 @@ export default function CartIndex(){
             </table>
 
             <section className="checkout">
-                <div className="checkout-row"><h4>Subtotal</h4><p>{`$${subtotal.toFixed(2)}`}</p></div>
+                <div className="checkout-row"><h4>Subtotal</h4><p>{subtotal.toFixed(2)}</p></div>
                 <div className="checkout-row"><h4>Shipping</h4><p>0</p></div>
-                <div className="checkout-row"><h4>Total</h4><p>{`$${subtotal.toFixed(2)}`}</p></div>
+                <div className="checkout-row"><h4>Total</h4><p>{subtotal.toFixed(2)}</p></div>
                 <div><button onClick={handleCheckout}>checkout</button></div>
             </section>
         </div>

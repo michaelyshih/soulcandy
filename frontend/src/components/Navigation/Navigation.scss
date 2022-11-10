@@ -83,17 +83,16 @@
     margin: 0;
     pointer-events: none;
     // transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-    transition: .25s ease-in-out;
+    transition: .5s ease-in-out;
     // transform: translateZ(-100px) translateY(-20px);
     min-width: 160px;
     padding: 2% 2%;
-
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     overflow: hidden;
-    transform: translate3d(0,90,0);
+    transform: translate3d(0,0,0);
     transition: .25s ease-out;
     background-color: #fff;
 

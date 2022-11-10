@@ -5,15 +5,20 @@ import { useParams,useLocation } from "react-router";
 import { createItem } from "../../store/cartItemsReducer";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import { getItem, updateItem} from "../../store/cartItemsReducer";
+import  Reviews from '../Reviews';
 import "./ProductShowPage.scss"
+import { fetchReviews, getReviews } from "../../store/reviewsReducer";
+import ReactStars from "react-rating-stars-component"
 
 export default function ProductShowPage(){
     const dispatch = useDispatch();
     const {productName} = useParams();
     const product = useSelector(getProduct(productName))
     const {user} = useSelector(state=>state.session)
+    const reviews = useSelector(getReviews);
 
     const location = useLocation();
+
     const preSelectedColor = location.state ? location.state.selectedColor : {}
     const colorArray = [];
     const [selectedColor, setSelectedColor] = useState(preSelectedColor)
@@ -24,22 +29,33 @@ export default function ProductShowPage(){
         dispatch(fetchProduct(productName))
     },[productName])
 
+    useEffect(()=>{
+        if(Object.keys(reviews).length !== 0 && (Object.keys(reviews).length !== product.numReviews)){
+            dispatch(fetchProduct(productName))
+        };
+    },[reviews])
 
+    useEffect(()=>{
+        if (product){
+            dispatch(fetchReviews(product.id))
+        }
+    },[product])
 
     if (!product || !product.photos || !product.details ) return null
 
     let colorKeys = {}
     product.color.split(",").map(color =>{
+        const colorTag = color.toLowerCase().split(" ").join(".").split("/").join(".")
         if (!colorArray.includes(color)) colorArray.push(color);
         [1,2,3,4].map( i =>{
-            const colorKey = `${color.toLowerCase().split(" ").join(".").split("/").join(".")}.${i}.jpg`
+            const colorKey = `${colorTag}.${i}.jpg`
             if (!colorKeys[color]){
                 colorKeys[color] = [colorKey]
             } else {
                 colorKeys[color] = colorKeys[color].concat([colorKey]);
             }
         })
-        colorKeys[color] = colorKeys[color].concat([`${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`])
+        colorKeys[color] = colorKeys[color].concat([`${colorTag}.i.jpg`])
     });
 
     let details = {}
@@ -61,6 +77,7 @@ export default function ProductShowPage(){
     })
 
     const handleCart= (e)=>{
+        const currColor = colorKeys[selectedColor]
         e.preventDefault();
         if (user && !cartItem){
             const newCartItem = {
@@ -69,7 +86,7 @@ export default function ProductShowPage(){
                 name: product.name,
                 price: product.price,
                 color: selectedColor,
-                img_url: product.photos[colorKeys[selectedColor][colorKeys[selectedColor].length-1]],
+                img_url: product.photos[currColor[currColor.length-1]],
                 amount:1,
                 fullname: product.fullname
             }
@@ -90,6 +107,18 @@ export default function ProductShowPage(){
     if (Object.keys(selectedColor).length === 0)return null;
 
     // debugger
+    const ratingsStar = {
+        size: 10,
+        count: 5,
+        color: "",
+        value: product.avgReviews ? product.avgReviews : 5,
+        activeColor: "white",
+        isHalf: true,
+        emptyIcon: <i className="far fa-star" />,
+        halfIcon: <i className="fa fa-star-half-alt" />,
+        filledIcon: <i className="fa fa-star" />,
+        edit:false
+      };
 
     return (
             <ul className="show-bgi-container">
@@ -100,12 +129,8 @@ export default function ProductShowPage(){
                         <p className="info-price">{details.price}</p>
                         <p className="info-split">{details.split}</p>
                         <div className= "info-reviews">
-                            <i className="fa-regular fa-star"></i>
-                            <i className="fa-regular fa-star"></i>
-                            <i className="fa-regular fa-star"></i>
-                            <i className="fa-regular fa-star"></i>
-                            <i className="fa-regular fa-star"></i>
-                            <p>164 reviews</p>
+                        <ReactStars {...ratingsStar} />
+                            <p>{product.numReviews} reviews</p>
                         </div>
                         <p>
                             {colorArray.map((color,i)=>{
@@ -122,6 +147,7 @@ export default function ProductShowPage(){
                     src={`${product.photos[colorKeys[selectedColor][0]]}`}
                     alt="" />
                 </li>
+                <Reviews reviews={reviews} productId={product.id}/>
             </ul>
     )
 }
