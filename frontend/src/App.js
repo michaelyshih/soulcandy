@@ -7,6 +7,7 @@ import CategoryIndex from './components/CategoryIndex';
 import ProductShowPage from './components/ProductShowPage';
 import Splash from './components/Splash';
 import CartIndex from './components/CartIndex';
+import CategorySearch from './components/CategorySearch';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route exact path="/login">
             <LoginFormPage />
+          </Route>
+          <Route exact path="/search">
+            <CategorySearch />
           </Route>
           <Route exact path="/products">
             <CategoryIndex />

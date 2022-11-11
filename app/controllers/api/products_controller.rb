@@ -40,11 +40,21 @@ class Api::ProductsController < ApplicationController
 
       when "accessory"
           @products ||= Product.where("accessory")
-        end
+      end
     end
   end
 
   def show
       @product = Product.find_by(name: params[:product_name])
   end
+
+  def search
+    @products ||= Product.where("details ILIKE ?", "%#{params[:query]}%")
+    if (@products.empty?)
+      @products ||= Product.all
+    end
+    render "/api/products/index"
+  end
+
+
 end

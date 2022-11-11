@@ -32,7 +32,15 @@ export const fetchProducts = (category,subcategory) => async (dispatch) => {
     if (res.ok){
         const newProducts = await res.json();
         dispatch(receiveProducts(newProducts))
-    } 
+    }
+}
+
+export const fetchProductsBySearch = (query) => async (dispatch) => {
+    const res = await csrfFetch(`/api/search?query=${query}`)
+    if (res.ok){
+        const newProducts = await res.json();
+        dispatch(receiveProducts(newProducts))
+    }
 }
 
 export const fetchProduct = (productName) => async (dispatch) => {

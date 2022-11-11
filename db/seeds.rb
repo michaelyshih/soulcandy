@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "open-uri"
 
-ApplicationRecord.transaction do
+# ApplicationRecord.transaction do
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     Review.destroy_all
@@ -327,4 +327,4 @@ ApplicationRecord.transaction do
       ])
 
     puts "Done!"
-  end
+  # end

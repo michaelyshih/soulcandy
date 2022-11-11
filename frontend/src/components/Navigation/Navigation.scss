@@ -10,7 +10,7 @@
     color:white;
     padding-left: 10px;
     padding-right: 10px;
-    z-index: 100;
+    z-index: 10;
     overflow: visible;
 }
 
@@ -47,9 +47,10 @@
 .nav-bar:hover{
     .shop-dropdown{
         opacity: 1;
-        transform: translate3d(0,100%,0);
+        transform: translateY(100%);
         pointer-events: auto;
-
+        z-index: -99;
+        animation: drop .5s ease-in-out;
     }
     + .layer{
         opacity: .5;
@@ -86,8 +87,18 @@
     left: 0;
     width: 100%;
     overflow: hidden;
-    transform: translate3d(0,0,0);
-    transition: .25s ease-out;
+    transform: translateY(0);
+
+    z-index: 3;
+
+    @keyframes drop {
+        0% {
+            transform: translateY(90%);
+        }
+        100% {
+            transform: translateY(100%);
+        }
+    }
 
     li{
         padding: 5px;
@@ -119,4 +130,17 @@ a, a:hover, a:focus, a:active {
     *{
         padding: 5px;
     }
+}
+
+.search-button{
+    height: 3em;
+    width: 5em;
+    margin: 0px 2em;
+}
+
+.profile-dropdown{
+    background-color: black;
+    border-radius: 10%;
+    top: 70vh;
+    z-index: 5;
 }

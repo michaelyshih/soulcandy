@@ -1,12 +1,17 @@
 
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.scss';
+import { fetchProductsBySearch } from '../../store/productsReducer';
+import { useState } from 'react';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
+  const [searchValue,setSearchValue] = useState("Search for Item");
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   let sessionLinks;
   if (sessionUser) {
@@ -20,6 +25,33 @@ function Navigation() {
       </>
     );
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    debugger
+    // console.log("hello")
+    if (searchValue === "Search for Item"){
+      dispatch(fetchProductsBySearch())
+    }
+    dispatch(fetchProductsBySearch(searchValue))
+    setSearchValue("Search for Item")
+    history.push(`/search`)
+
+  }
+
+  const handleLeave = (e) =>{
+    e.preventDefault();
+    if (searchValue === "") {
+      setSearchValue("Search for Item")
+    }
+  }
+  const handleFocus = (e) =>{
+    e.preventDefault();
+    if (searchValue === "Search for Item") {
+      setSearchValue("")
+    }
+  }
+
 
   return (
     <nav className='nav-bar'>
@@ -52,18 +84,35 @@ function Navigation() {
             <ul>
               <h3><Link to="/accessory">Acessories</Link></h3>
             </ul>
-
           </section>
         </section>
       </section>
-      <section className='purchase-nav'>
+      <ul className='purchase-nav'>
         <li>{sessionLinks}</li>
         <li>
           <Link to="/cart">
             <i className="fa-solid fa-bag-shopping"></i>
           </Link>
         </li>
-      </section>
+        <li>
+          <form onSubmit={handleSubmit}>
+
+            <input
+            type="text"
+            value={searchValue}
+            onChange={e=>setSearchValue(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleLeave}
+            />
+
+            <button type='submit' className='search-button'>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+          </form>
+        </li>
+      </ul>
+
     </nav>
   );
 }
