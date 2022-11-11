@@ -14,10 +14,14 @@ export default function Splash(){
             <picture className="side-pictures">
                 <picture>
                     <h2>SKULLCANDY</h2>
-                    <img src="https://images.prismic.io/skullcandy/66314154-b6ff-4236-ac9c-f145226f2191_Image20221004103243.jpg?auto=compress,format" alt="splash" />
+                    <Link to="/shop/gaming">
+                        <img src="https://images.prismic.io/skullcandy/66314154-b6ff-4236-ac9c-f145226f2191_Image20221004103243.jpg?auto=compress,format" alt="splash" />
+                    </Link>
                 </picture>
                 <picture>
-                <img src="https://images.prismic.io/skullcandy/1d509e25-4aec-41fe-9fbf-a5e9b144b4d9_3_indyevo_SF.jpg?auto=compress,format" alt="" />
+                    <Link to="products/indy-anc-wireless-earbuds">
+                        <img src="https://images.prismic.io/skullcandy/1d509e25-4aec-41fe-9fbf-a5e9b144b4d9_3_indyevo_SF.jpg?auto=compress,format" alt="" />
+                    </Link>
                 </picture>
             </picture>
         </section>

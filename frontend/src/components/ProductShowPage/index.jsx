@@ -139,7 +139,7 @@ export default function ProductShowPage(){
         edit:false
       };
 
-    console.log(product.photos[colorKeys[selectedColor][2]])
+      
     return (
             <ul className="show-bgi-container">
                 <div className="show-info-container">
@@ -169,7 +169,7 @@ export default function ProductShowPage(){
                         images={product.photos}
                         colorKeys={colorKeys[selectedColor].slice(0,colorKeys[selectedColor].length-1)}/>
                 </li>
-                
+
                 <Reviews reviews={reviews} productId={product.id}/>
             </ul>
     )

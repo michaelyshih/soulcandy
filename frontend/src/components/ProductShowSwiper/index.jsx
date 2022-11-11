@@ -23,29 +23,6 @@ export default function ProductShowSwiper({parsedColor, images, colorKeys}){
 
     return (
         <>
-        {/* {console.log(parsedColor)}
-        {console.log(images)}
-        {console.log(colorKeys)}
-        <div class="swiper">
-
-            <div class="swiper-wrapper">
-                {colorKeys.map(colorKey=>{
-                    console.log(colorKey)
-                    return (
-                        <div class="swiper-slide">
-                            <img
-                            src={`${images[colorKey]}`}
-                            alt="" />
-                        </div>)
-
-                })}
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-scrollbar"></div>
-
-        </div> */}
         <Swiper
         pagination={true}
         navigation={true}
