@@ -9,6 +9,9 @@ import  Reviews from '../Reviews';
 import "./ProductShowPage.scss"
 import { fetchReviews, getReviews } from "../../store/reviewsReducer";
 import ReactStars from "react-rating-stars-component"
+import ProductShowSwiper from "../ProductShowSwiper";
+
+
 
 export default function ProductShowPage(){
     const dispatch = useDispatch();
@@ -41,11 +44,17 @@ export default function ProductShowPage(){
         }
     },[product])
 
+
     if (!product || !product.photos || !product.details ) return null
 
+
     let colorKeys = {}
+    const parseColor = (color) =>{
+        return color.toLowerCase().split(" ").join(".").split("/").join(".")
+    }
+
     product.color.split(",").map(color =>{
-        const colorTag = color.toLowerCase().split(" ").join(".").split("/").join(".")
+        const colorTag = parseColor(color)
         if (!colorArray.includes(color)) colorArray.push(color);
         [1,2,3,4].map( i =>{
             const colorKey = `${colorTag}.${i}.jpg`
@@ -108,8 +117,14 @@ export default function ProductShowPage(){
         }
 
     }
-    if (Object.keys(selectedColor).length === 0) setSelectedColor(colorArray[0])
-    if (Object.keys(selectedColor).length === 0)return null;
+    let parsedColor
+    if (Object.keys(selectedColor).length === 0){
+        setSelectedColor(colorArray[0])
+    } else {
+        parsedColor = parseColor(selectedColor)
+    }
+
+    if (Object.keys(selectedColor).length === 0 || !parsedColor) return null;
 
     const ratingsStar = {
         size: 10,
@@ -124,6 +139,7 @@ export default function ProductShowPage(){
         edit:false
       };
 
+    console.log(product.photos[colorKeys[selectedColor][2]])
     return (
             <ul className="show-bgi-container">
                 <div className="show-info-container">
@@ -146,10 +162,15 @@ export default function ProductShowPage(){
                     </div>
                 </div>
 
+                <ProductShowSwiper parsedColor={parsedColor} images={product.photos} colorKeys={colorKeys}/>
+
                 <li className="show-bgi">
                     <img
                     src={`${product.photos[colorKeys[selectedColor][0]]}`}
                     alt="" />
+                    {console.log(parsedColor)}
+                    {console.log(product.photos)}
+                    {console.log(colorKeys)}
                 </li>
                 <Reviews reviews={reviews} productId={product.id}/>
             </ul>
