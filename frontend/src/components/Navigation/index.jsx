@@ -28,14 +28,14 @@ function Navigation() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger
-    // console.log("hello")
     if (searchValue === "Search for Item"){
-      dispatch(fetchProductsBySearch())
+      history.push("/search/NO INPUT")
+    } else {
+      setSearchValue("Search for Item")
+      history.push(`/search/${searchValue}`)
     }
-    dispatch(fetchProductsBySearch(searchValue))
-    setSearchValue("Search for Item")
-    history.push(`/search`)
+
+
 
   }
 
@@ -64,25 +64,25 @@ function Navigation() {
           <Link className="shop" to="/products"><h3>SHOP</h3></Link>
           <section className='shop-dropdown'>
             <ul>
-              <h3><Link to="/earbuds">Earbuds</Link></h3>
-              <li><Link to="/earbuds/wireless">True Wireless Earbuds</Link></li>
-              <li><Link to="/earbuds/wired">Wired Earbuds</Link></li>
-              <li><Link to="/earbuds">Shop All Earbuds</Link></li>
+              <h3><Link to="/shop/earbuds">Earbuds</Link></h3>
+              <li><Link to="/shop/earbuds/wireless">True Wireless Earbuds</Link></li>
+              <li><Link to="/shop/earbuds/wired">Wired Earbuds</Link></li>
+              <li><Link to="/shop/earbuds">Shop All Earbuds</Link></li>
             </ul>
             <ul>
-              <h3><Link to="/headset">Headphones</Link></h3>
-              <li><Link to="/headset/wireless">Wireless Headphones</Link></li>
-              <li><Link to="/headset/wired">Wired Headphones</Link></li>
-              <li><Link to="/headset">Shop All Headphones</Link></li>
+              <h3><Link to="/shop/headset">Headphones</Link></h3>
+              <li><Link to="/shop/headset/wireless">Wireless Headphones</Link></li>
+              <li><Link to="/shop/headset/wired">Wired Headphones</Link></li>
+              <li><Link to="/shop/headset">Shop All Headphones</Link></li>
             </ul>
             <ul>
-              <h3><Link to="/gaming">Gaming</Link></h3>
-              <li><Link to="/gaming/headset">Gaming Headphones</Link></li>
-              <li><Link to="/gaming/accessory">Gaming Accessory</Link></li>
-              <li><Link to="/gaming">Shop All Gaming</Link></li>
+              <h3><Link to="/shop/gaming">Gaming</Link></h3>
+              <li><Link to="/shop/gaming/headset">Gaming Headphones</Link></li>
+              <li><Link to="/shop/gaming/accessory">Gaming Accessory</Link></li>
+              <li><Link to="/shop/gaming">Shop All Gaming</Link></li>
             </ul>
             <ul>
-              <h3><Link to="/accessory">Acessories</Link></h3>
+              <h3><Link to="/shop/accessory">Acessories</Link></h3>
             </ul>
           </section>
         </section>

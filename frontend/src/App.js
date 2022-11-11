@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
@@ -25,11 +25,11 @@ function App() {
           <Route exact path="/login">
             <LoginFormPage />
           </Route>
-          <Route exact path="/search">
-            <CategorySearch />
-          </Route>
           <Route exact path="/products">
             <CategoryIndex />
+          </Route>
+          <Route exact path="/search/:query">
+            <CategorySearch />
           </Route>
           <Route exact path="/products/:productName">
             <ProductShowPage />
@@ -37,15 +37,16 @@ function App() {
           <Route exact path="/cart">
             <CartIndex />
           </Route>
-          <Route exact path="/:category">
+          <Route exact path="/shop/:category">
             <CategoryIndex />
           </Route>
-          <Route exact path="/:category/:subcategory">
+          <Route exact path="/shop/:category/:subcategory">
             <CategoryIndex />
           </Route>
+          <Redirect from="*" to='/' />
         </Switch>
       </section>
-      
+
     </>
   );
 }

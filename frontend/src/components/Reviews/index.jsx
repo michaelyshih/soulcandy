@@ -15,7 +15,6 @@ export default function Review({reviews , productId}) {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        debugger
         if (user && !edittingReview){
             const newReview = {
                 name: name,
