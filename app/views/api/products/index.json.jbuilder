@@ -6,3 +6,4 @@
         json.photos product_hash
     end
 end
+

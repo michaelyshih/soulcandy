@@ -162,16 +162,14 @@ export default function ProductShowPage(){
                     </div>
                 </div>
 
-                <ProductShowSwiper parsedColor={parsedColor} images={product.photos} colorKeys={colorKeys}/>
 
                 <li className="show-bgi">
-                    <img
-                    src={`${product.photos[colorKeys[selectedColor][0]]}`}
-                    alt="" />
-                    {console.log(parsedColor)}
-                    {console.log(product.photos)}
-                    {console.log(colorKeys)}
+                    <ProductShowSwiper
+                        parsedColor={parsedColor}
+                        images={product.photos}
+                        colorKeys={colorKeys[selectedColor].slice(0,colorKeys[selectedColor].length-1)}/>
                 </li>
+                
                 <Reviews reviews={reviews} productId={product.id}/>
             </ul>
     )
