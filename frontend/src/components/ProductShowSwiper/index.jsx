@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import 'swiper/css/pagination';
 import "./ProductShowSwiper.scss"
 
-export default function ProductShowSwiper({parsedColor, images, colorKeys}){
+export default function ProductShowSwiper({ images, colorKeys}){
 
     // const swiper = new Swiper('.swiper',{
     //     loop: true,
@@ -20,13 +20,17 @@ export default function ProductShowSwiper({parsedColor, images, colorKeys}){
     //     //     {el:".swiper-scrollbar"}
     // })
 
+    const isSingle = () =>{
+        if (colorKeys.length === 1) return false ;
+        return true;
+    }
 
     return (
         <>
         <Swiper
         pagination={true}
         navigation={true}
-        loop={true}
+        loop={isSingle()}
         autoplay={{
             delay: 3500,
             disableOnInteraction: false,

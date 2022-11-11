@@ -1,16 +1,14 @@
 
 import React from 'react';
 import { NavLink, Link, useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.scss';
-import { fetchProductsBySearch } from '../../store/productsReducer';
 import { useState } from 'react';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
   const [searchValue,setSearchValue] = useState("Search for Item");
-  const dispatch = useDispatch();
   const history = useHistory();
 
   let sessionLinks;

@@ -56,14 +56,13 @@ export default function ProductShowPage(){
     product.color.split(",").map(color =>{
         const colorTag = parseColor(color)
         if (!colorArray.includes(color)) colorArray.push(color);
-        [1,2,3,4].map( i =>{
-            const colorKey = `${colorTag}.${i}.jpg`
+        Object.keys(product.photos).filter(key=>!key.includes("i.jpg") && key.includes(colorTag)).map( key =>{
             if (!colorKeys[color]){
-                colorKeys[color] = [colorKey]
+                colorKeys[color] = [key]
             } else {
-                colorKeys[color] = colorKeys[color].concat([colorKey]);
+                colorKeys[color] = colorKeys[color].concat([key]);
             }
-            return i ;
+            return key ;
         })
         colorKeys[color] = colorKeys[color].concat([`${colorTag}.i.jpg`])
         return color;
@@ -139,7 +138,6 @@ export default function ProductShowPage(){
         edit:false
       };
 
-      
     return (
             <ul className="show-bgi-container">
                 <div className="show-info-container">

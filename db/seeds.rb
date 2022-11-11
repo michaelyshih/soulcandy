@@ -250,7 +250,7 @@ require "open-uri"
       name: 'slyr',
       fullname: "SLYR® Multi-Platform Wired Gaming Headset",
       price: '59.99',
-      color: 'Blue DigiHype,Black DigiHype, Green DigiHype',
+      color: 'Blue DigiHype,Black DigiHype,Green DigiHype',
       details:
       "GAMING ESSENTIAL, PREMIUM SOUND.
       SLYR® Multi-Platform Wired Gaming Headset
@@ -327,6 +327,150 @@ require "open-uri"
       ])
 
     puts "Creating Reviews..."
+
+    Review.create!(
+      name:"YOU WIN",
+      rating:5,
+      body:"I am enjoying these headphones so much. I can take them anywhere and they are really comfy. Just wish that they were wireless with all devices. The device needed to connect it is sold separately. Apart from that the bluetooth connectivity and wired connectivity is great. Customizing the audio is fun too.",
+      product_id: 5,
+      user_id:1
+    )
+
+    Review.create!(
+      name:"VERY GOOD",
+      rating:5,
+      body:"I always buy Skullcandy because the products are always top tier down to the earbuds",
+      product_id: 5,
+      user_id:4
+    )
+
+    Review.create!(
+      name:"AWESOME PRODUCT LOVING IT",
+      rating:5,
+      body:"Awesome product loving it",
+      product_id: 5,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"MORE THAN HAPPY",
+      rating:5,
+      body:"MORE THAN HAPPY",
+      product_id: 1,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"I’M HAPPY WITH MY PURCHASE",
+      rating:5,
+      body:"So Far, So Good :)",
+      product_id: 1,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"EXCELLENT",
+      rating:5,
+      body:"Best ear buds I have ever used. The carrying case/charger design is pure genius.",
+      product_id: 1,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"GREAT HEADPHONES",
+      rating:5,
+      body:"These headphones are great and are a great price.",
+      product_id: 1,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"WORKING GREAT SO FAR, WITH AWESOME SOUND AND SOLID NOISE CANCELLATION.",
+      rating:5,
+      body:"Good quality and sound!",
+      product_id: 1,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"SUPER COOL",
+      rating:5,
+      body:"Great product, and great customer service..",
+      product_id: 2,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"AWESOME BUT WHEN DELIVERED THEY",
+      rating:5,
+      body:"Awesome but when delivered they struggled to stay synced up and play the audio accurately",
+      product_id: 2,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"EXCELENT!",
+      rating:5,
+      body:"Excelent!good fit, great sound.",
+      product_id: 2,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"ME AND MY MUSICALLY",
+      rating:5,
+      body:"There are awesome, the sound is totally perfect",
+      product_id: 2,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"BETTER THAN EXPECTED",
+      rating:5,
+      body:"Fits well, noise canceling and audio are good. Good price point.",
+      product_id: 2,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"PERFECT",
+      rating:5,
+      body:"Perfect",
+      product_id: 3,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"THESE ARE A GREAT PRODUCT.",
+      rating:5,
+      body:"These are a great product. Easy to use and great sound.",
+      product_id: 3,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"EVERYTHING I WANT IN EARBUDS",
+      rating:5,
+      body:"These have awesome bass :sign_horns|type_2:",
+      product_id: 3,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"UNSURE!",
+      rating:5,
+      body:"Truly dont know, they wouldnt charge so I didn't get to use them!",
+      product_id: 3,
+      user_id:6
+    )
+
+    Review.create!(
+      name:"WHERE HAVE YOU BEEN MY WHOLE LIFE!",
+      rating:5,
+      body:"This is another great product by Skullcandy, love the features and would recomend to anyone in the market for wireless earbuds!",
+      product_id: 3,
+      user_id:6
+    )
 
     puts "Done!"
   # end
