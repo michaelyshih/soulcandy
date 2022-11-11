@@ -326,10 +326,7 @@ require "open-uri"
       {io: URI.open("https://soulcandy-seeds-2.s3.us-west-1.amazonaws.com/transmitter-i.png"), filename: "True.Black.i.jpg"}
       ])
 
-    puts "Creating products..."
-
-    Review.create!()
-
+    puts "Creating Reviews..."
 
     puts "Done!"
   # end
