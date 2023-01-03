@@ -9,7 +9,7 @@ export default function ImageLoader ({ placeholderSrc, src, ...props }) {
         img.onload = () => {
           setImgSrc(src);
         }
-    }, []);
+    }, [imgSrc]);
 
     return (
       <img
