@@ -8,6 +8,7 @@ import ProductShowPage from './components/ProductShowPage';
 import Splash from './components/Splash';
 import CartIndex from './components/CartIndex';
 import CategorySearch from './components/CategorySearch';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
           <Redirect from="*" to='/' />
         </Switch>
       </section>
-
+    <Footer/>
     </>
   );
 }

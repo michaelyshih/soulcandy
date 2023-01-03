@@ -1,0 +1,20 @@
+.footer{
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    font-size: 30px;
+    background-color: black;
+    width: -webkit-fill-available;
+    height: fit-content;
+    list-style: none;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 10;
+    overflow: visible;
+    bottom: 0;
+
+    *{
+        margin: 10px;
+    }
+}
