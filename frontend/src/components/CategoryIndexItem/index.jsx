@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import "./CategoryIndexItem.scss"
+import ImageLoader from "../ImageLoader"
 
 export default function CategoryIndexitem ({product}) {
 
@@ -17,11 +18,11 @@ export default function CategoryIndexitem ({product}) {
                 state:{selectedColor:selectedColor}
                 }}
                 className="product-link" >
-                <img
-                    className="display-img"
-                    src={photos[`${selectedColor.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`]}
-                    alt="" />
-                {/* <div className="display-img"></div> */}
+                <ImageLoader
+                 className="display-img"
+                 src={photos[`${selectedColor.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`]}
+                 alt=""
+                />
             </Link>
             <ul className="color-img-container" >
                 {product.color.split(",").map(color=>

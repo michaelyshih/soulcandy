@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./CartIndexItem.scss"
 import { deleteItem, updateItem } from "../../store/cartItemsReducer";
+import ImageLoader from "../ImageLoader";
 
 export default function CartIndexItem({item}){
     const dispatch = useDispatch();
@@ -39,8 +40,11 @@ export default function CartIndexItem({item}){
             <td className="cart-item-info-block">
                     <picture className="cart-image-container">
                         <Link to={`/products/${item.name}`}>
-                            <img className="cart-image" src={item.imgUrl} alt="" />
-                            {/* <div className="cart-image"></div> */}
+                            <ImageLoader
+                            className="cart-image"
+                            src={item.imgUrl}
+                            alt=""
+                            />
                         </Link>
                     </picture>
                 <div className="cart-item-info">
