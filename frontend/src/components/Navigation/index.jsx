@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
-  const [searchValue,setSearchValue] = useState("Search for Item");
+  const [searchValue,setSearchValue] = useState();
   const history = useHistory();
 
   let sessionLinks;
@@ -101,6 +101,7 @@ function Navigation() {
             onChange={e=>setSearchValue(e.target.value)}
             onFocus={handleFocus}
             onBlur={handleLeave}
+            placeholder={"Search for Item"}
             />
 
             <button type='submit' className='search-button'>
