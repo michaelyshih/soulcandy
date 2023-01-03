@@ -33,7 +33,7 @@ export default function ProductShowPage(){
     },[productName])
 
     useEffect(()=>{
-        if(Object.keys(reviews).length !== 0 && (Object.keys(reviews).length !== product.numReviews)){
+        if(product && Object.keys(reviews).length !== 0 && (Object.keys(reviews).length !== product.numReviews)){
             dispatch(fetchProduct(productName))
         };
     },[reviews])
@@ -151,7 +151,8 @@ export default function ProductShowPage(){
                             <p>{product.numReviews} reviews</p>
                         </div>
                         <p>
-                            {colorArray.map((color,i)=>{
+                            { colorArray.length > 1 &&
+                            colorArray.map((color,i)=>{
                                 return <button key={`${color + i} button`} onClick={()=>{setSelectedColor(color)}} className="color-selector">{color}</button>
                             })}
                         </p>
