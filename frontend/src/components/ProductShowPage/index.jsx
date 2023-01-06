@@ -150,12 +150,14 @@ export default function ProductShowPage(){
                         <ReactStars {...ratingsStar} />
                             <p>{product.numReviews} reviews</p>
                         </div>
-                        <p>
+                        <div>
                             { colorArray.length > 1 &&
                             colorArray.map((color,i)=>{
-                                return <button key={`${color + i} button`} onClick={()=>{setSelectedColor(color)}} className="color-selector">{color}</button>
+                                return (
+                                <button key={`${color + i} button`} onClick={()=>{setSelectedColor(color)}} className="color-selector">{color}</button>
+                                )
                             })}
-                        </p>
+                        </div>
 
                         <button onClick={handleCart}>Add item to cart</button>
                     </div>
