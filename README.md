@@ -39,27 +39,17 @@ SoulCandy utilizes Ruby on Rails back end and uses database using PostgreSQL. Th
  - Users can add selected color product to cart
  - Users can maintain the selected color through the category page
 
-### cart:
+### reviews:
 
- - Users can add items to cart
- - Users can remove items from cart
- - Users can edit the number of items they currently have in their car
- - Users can remove item from cart if the item value falls under 0
+ - Users can leave a review
+ - Users can only remove their own review
+ - Users can edit only their ow review
+ - Users can see their review instantaniously get updated
 
-### Channels:
+### Search:
 
- - Users can create channels to have group conversations with other users from same server
- - Users can delete their owned channels
-
-### Direct Messages:
-
- - Users can create new conversations with friends and chat with them
- - DMs oppertae in the same sense Messages do
-
-### Friends:
-
-- Users can add new friends
-- Users can send DM's to their friends
+ - Users can find their desired item by searching for keywords
+ - when there is no items found with the keyword search, there would be nothing shown
 
 ---
 
