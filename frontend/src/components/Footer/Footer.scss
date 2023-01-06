@@ -1,11 +1,12 @@
 .footer{
+    margin-top: auto;
     display: flex;
     position: relative;
     justify-content: flex-end;
     font-size: 30px;
     background-color: black;
     width: -webkit-fill-available;
-    height: fit-content;
+    height: 10vh;
     list-style: none;
     color: white;
     padding-left: 10px;

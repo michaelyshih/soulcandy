@@ -9,8 +9,8 @@ export default function ImageLoader ({ placeholderSrc, src, ...props }) {
         img.onload = () => {
           setImgSrc(src);
         }
-    }, [imgSrc]);
-
+    }, [src]);
+    
     return (
       <img
         {...{ src: imgSrc, ...props }}

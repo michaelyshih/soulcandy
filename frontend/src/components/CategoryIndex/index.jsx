@@ -11,18 +11,18 @@ export default function CategoryIndex(){
     const {category, subcategory} = useParams();
     let titleCard
 
-    switch(true){
-        case category === "headset":
+    switch(category){
+        case "headset":
             titleCard = subcategory ? `${subcategory.toUpperCase()} HEADPHONES` : `HEADPHONES`
             break
-        case category === "earbuds":
+        case "earbuds":
             if (subcategory === "wireless") titleCard = "TRUE WIRELESS"
             titleCard = subcategory ? `${subcategory.toUpperCase()} EARBUDS` : `EARBUDS`
             break
-        case category === "accessory":
+        case "accessory":
             titleCard = "ACCESSORY"
             break
-        case category === "gaming":
+        case "gaming":
             titleCard = "GAMING"
             break
         default:

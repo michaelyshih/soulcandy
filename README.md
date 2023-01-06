@@ -55,32 +55,88 @@ SoulCandy utilizes Ruby on Rails back end and uses database using PostgreSQL. Th
 
 ## Code Snippets
 
-1.
+1. Dry implementation of categories and search result utilizing same style and component
 
 ```javascript
-// frontend/src/components/Messages/messageForm.jsx line 15
- const handleSubmit = (e) => {
-    e.preventDefault();
-    if (channel) {
-      const formData = new FormData();
-      if (messageFile){
-        formData.append('message[photo]', messageFile)
-      }
-      formData.append('message[channelId]', channel.id)
-      formData.append('message[userId]', userId)
-      formData.append('message[text]', text)
-      dispatch(
-        createMessage(formData)
-      );
-    setText("");
-    setMessageUrl("");
-    setMessageFile("");
-  };
+// frontend/src/components/CategoryIndex/index.jsx line 10
+    const dispatch = useDispatch();
+    const {category, subcategory} = useParams();
+    let titleCard
+
+    switch(category){
+        case "headset":
+            titleCard = subcategory ? `${subcategory.toUpperCase()} HEADPHONES` : `HEADPHONES`
+            break
+        case "earbuds":
+            if (subcategory === "wireless") titleCard = "TRUE WIRELESS"
+            titleCard = subcategory ? `${subcategory.toUpperCase()} EARBUDS` : `EARBUDS`
+            break
+        case "accessory":
+            titleCard = "ACCESSORY"
+            break
+        case "gaming":
+            titleCard = "GAMING"
+            break
+        default:
+            titleCard = "SHOP"
+    }
+
+```
+
+2. Utilizing a image loader component to clean up effect of image rendering
+
+```javascript
+// frontend/src/components/CategoryIndexItem/index.jsx line 30
+            <ul className="color-img-container" >
+                {product.color.split(",").map(color=>
+                    <li key={product.name + color}>
+                        <Link to={{
+                            pathname:`/products/${product.name}`,
+                            state:{selectedColor:selectedColor}
+                            }}
+                            className="product-link">
+                            <img className="color-img"
+                            src={photos[parseColor(color)]}
+                            onMouseOver={()=>setSelectedColor(color)}
+                            alt="" />
+                        </Link>
+
+                    </li>
+                )}
+            </ul>
+
+```
+
+3. Maintaining color selection and passing a variable to another component in the history chain using useLocation.
+
+```javascript
+// frontend/src/components/CategoryIndex/index.jsx line 10
+    const dispatch = useDispatch();
+    const {category, subcategory} = useParams();
+    let titleCard
+
+    switch(category){
+        case "headset":
+            titleCard = subcategory ? `${subcategory.toUpperCase()} HEADPHONES` : `HEADPHONES`
+            break
+        case "earbuds":
+            if (subcategory === "wireless") titleCard = "TRUE WIRELESS"
+            titleCard = subcategory ? `${subcategory.toUpperCase()} EARBUDS` : `EARBUDS`
+            break
+        case "accessory":
+            titleCard = "ACCESSORY"
+            break
+        case "gaming":
+            titleCard = "GAMING"
+            break
+        default:
+            titleCard = "SHOP"
+    }
 
 ```
 
 ## Features for the Future
 
- - Video calls feature and channels wtih video calls
- - Server roles
- - Smaller features like emojis!
+ - Better search bar redirection
+ - More images and links to move around the site
+ - optimizing database to include more products

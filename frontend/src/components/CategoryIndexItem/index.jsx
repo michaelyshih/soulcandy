@@ -3,12 +3,15 @@ import { Link } from "react-router-dom"
 import "./CategoryIndexItem.scss"
 import ImageLoader from "../ImageLoader"
 
+function parseColor (color) {
+    return `${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`
+}
+
 export default function CategoryIndexitem ({product}) {
 
     const [selectedColor, setSelectedColor] = useState(product.color.split(",")[0])
 
     const photos = Object.fromEntries(Object.entries(product.photos).filter(([key])=>key.includes("i.jpg")))
-
 
     return (
         <section className="index-item-container">
@@ -20,7 +23,7 @@ export default function CategoryIndexitem ({product}) {
                 className="product-link" >
                 <ImageLoader
                  className="display-img"
-                 src={photos[`${selectedColor.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`]}
+                 src={photos[parseColor(selectedColor)]}
                  alt=""
                 />
             </Link>
@@ -33,7 +36,7 @@ export default function CategoryIndexitem ({product}) {
                             }}
                             className="product-link">
                             <img className="color-img"
-                            src={photos[`${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`]}
+                            src={photos[parseColor(color)]}
                             onMouseOver={()=>setSelectedColor(color)}
                             alt="" />
                         </Link>
