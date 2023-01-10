@@ -37,12 +37,13 @@ function Navigation() {
 
   }
 
-  const handleLeave = (e) =>{
-    e.preventDefault();
-    if (searchValue === "") {
-      setSearchValue("Search for Item")
-    }
-  }
+  // const handleLeave = (e) =>{
+    // e.preventDefault();
+    // if (searchValue === "") {
+    //   setSearchValue("Search for Item")
+    // }
+  // }
+
   const handleFocus = (e) =>{
     e.preventDefault();
     if (searchValue === "Search for Item") {
@@ -100,7 +101,7 @@ function Navigation() {
             value={searchValue}
             onChange={e=>setSearchValue(e.target.value)}
             onFocus={handleFocus}
-            onBlur={handleLeave}
+            // onBlur={handleLeave}
             placeholder={"Search for Item"}
             />
 

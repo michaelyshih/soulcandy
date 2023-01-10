@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-import './LoginForm.css';
+import './LoginForm.scss';
 import { fetchItems } from '../../store/cartItemsReducer';
 import { useEffect } from 'react';
 
@@ -64,8 +64,10 @@ function LoginFormPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          <button type="submit">Log In</button>
-          <button onClick={handleDemo}>Demo User</button>
+            <div className='login-button-container'>
+              <button type="submit">Log In</button>
+              <button onClick={handleDemo}>Demo User</button>
+            </div>
         </form>
         <div className='create-user-container'>
           <h3>NEW CUSTOMER?</h3>
@@ -76,7 +78,7 @@ function LoginFormPage() {
             <li>
               Check out faster
             </li>
-            <li>Sace multip shipping addresses</li>
+            <li>Save multiple shipping addresses</li>
             <li>Access your order history</li>
             <li>Track new orders</li>
           </div>

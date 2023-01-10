@@ -114,8 +114,8 @@ export default function ProductShowPage(){
         else {
             alert("Need to Sign In first")
         }
-
     }
+
     let parsedColor
     if (Object.keys(selectedColor).length === 0){
         setSelectedColor(colorArray[0])
@@ -150,11 +150,20 @@ export default function ProductShowPage(){
                         <ReactStars {...ratingsStar} />
                             <p>{product.numReviews} reviews</p>
                         </div>
-                        <div>
+                        <div className="buttons-container">
                             { colorArray.length > 1 &&
                             colorArray.map((color,i)=>{
                                 return (
-                                <button key={`${color + i} button`} onClick={()=>{setSelectedColor(color)}} className="color-selector">{color}</button>
+                                <button
+                                    key={`${color + i} button`}
+                                    onClick={()=>{setSelectedColor(color)}}
+                                    className= {`btn ${selectedColor === color ? 'btn-success' : null} color-selector`}
+                                    >
+                                        <span id="color-circle">
+                                            {console.log(parsedColor)}
+                                        </span>
+                                        {color}
+                                </button>
                                 )
                             })}
                         </div>

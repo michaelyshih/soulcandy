@@ -58,6 +58,31 @@
     font-weight: 700;
 }
 
+.buttons-container{
+    width: 41vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .color-selector{
-    width: 50px;
+    width: 14em;
+    margin-left: 5px;
+    height: 7em;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    span{
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        margin: 10px;
+        border-radius: 100%;
+    }
+}
+
+.btn-success {
+    background-color: gray;
 }
