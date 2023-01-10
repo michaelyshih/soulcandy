@@ -104,12 +104,14 @@ export default function ProductShowPage(){
                 fullname: product.fullname
             }
             dispatch(createItem(newCartItem))
+            alert("item added to cart");
         } else if (cartItem){
             const newCartItem = {
                 ...cartItem,
                 amount: cartItem.amount + 1
             }
             dispatch(updateItem(newCartItem))
+            alert("item added to cart");
         }
         else {
             alert("Need to Sign In first")
@@ -168,7 +170,7 @@ export default function ProductShowPage(){
                             })}
                         </div>
 
-                        <button onClick={handleCart}>Add item to cart</button>
+                        <button className="add-to-cart" onClick={handleCart}>Add item to cart</button>
                     </div>
                 </div>
 

@@ -15,6 +15,9 @@
 
 .cart-item-info{
     padding: 20px;
+    *{
+        padding-bottom: 10px;
+    }
 }
 
 .cart-items-table{
@@ -55,6 +58,10 @@ td{
     display: flex;
     width: 50%;
     justify-content: space-between;
+
+    a{
+        text-decoration: underline;
+    }
 }
 
 .checkout{

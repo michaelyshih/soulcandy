@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router";
 import { getItems, deleteItem } from "../../store/cartItemsReducer";
 import CartIndexItem from "../CartIndexItem";
 import "./CartIndex.scss"
@@ -29,6 +30,7 @@ export default function CartIndex(){
             dispatch(deleteItem(cart_item.id))
             return cart_item;
         })
+        alert("thank you for your purchase")
     }
 
     return (

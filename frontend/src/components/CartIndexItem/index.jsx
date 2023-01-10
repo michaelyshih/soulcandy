@@ -51,7 +51,7 @@ export default function CartIndexItem({item}){
                     <h4 className="cart-item-title">{item.fullname}</h4>
                     <p>{item.color}</p>
                     <div className="cart-item-edit">
-                        <a href="#">Change</a>
+                        {/* <a href="#">Change</a> */}
                         <a href="#" onClick={handleRemove}>Remove</a>
                     </div>
 
