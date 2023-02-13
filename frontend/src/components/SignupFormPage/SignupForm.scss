@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
     padding-top: 70px;
 }
 
@@ -13,8 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 4em;
-    height: 60vh;
+    height: 100vh;
     width:40em;
 
     li{
