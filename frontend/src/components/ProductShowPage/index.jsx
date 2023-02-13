@@ -115,7 +115,6 @@ export default function ProductShowPage(){
             alert("item added to cart");
         }
         else {
-            alert("Must sign-in first to add to cart")
             history.push(`/login`)
         }
     }
