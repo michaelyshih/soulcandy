@@ -44,16 +44,17 @@ function LoginFormPage() {
       <h1 className='title-card'>SIGN IN</h1>
       <div className='login-container'>
         <form className="login-form" onSubmit={handleSubmit} >
-          <ul>
-            {errors.map(error => <li key={error}>{error}</li>)}
-          </ul>
           <label htmlFor={credential}>Email Addess:
           </label>
           <input
               type="text"
               value={credential}
-              onChange={(e) => setCredential(e.target.value)}
+              onChange={(e) => {
+                setErrors([]);
+                setCredential(e.target.value)
+              }}
               required
+              className={errors.length > 0 ? "input, input-errors" : "input"}
             />
           <label htmlFor={password}>
             Password:
@@ -63,7 +64,11 @@ function LoginFormPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className={errors.length > 0 ? "input, input-errors" : "input"}
             />
+          <ul className='login-errors'>
+            {errors.map(error => <li key={error}>{error}</li>)}
+          </ul>
             <div className='login-button-container'>
               <button type="submit">Log In</button>
               <button onClick={handleDemo}>Demo User</button>
