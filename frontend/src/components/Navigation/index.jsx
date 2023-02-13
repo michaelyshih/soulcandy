@@ -33,8 +33,6 @@ function Navigation() {
       history.push(`/search/${searchValue}`)
     }
 
-
-
   }
 
   // const handleLeave = (e) =>{

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router";
+// import { Redirect } from "react-router";
 import { getItems, deleteItem } from "../../store/cartItemsReducer";
 import CartIndexItem from "../CartIndexItem";
 import "./CartIndex.scss"

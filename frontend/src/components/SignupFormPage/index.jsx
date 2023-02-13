@@ -21,7 +21,7 @@ function SignupFormPage() {
 
   useEffect(()=>{
     if (password !== confirmPassword){
-      setPasswordErrors(['Confirm Password must be same as Password'])}
+      setPasswordErrors(['Confirmation Password must be same as Password'])}
     else {setPasswordErrors("")}
   }, [password, confirmPassword])
 
@@ -42,63 +42,79 @@ function SignupFormPage() {
 
   return (
     <section className="signup-page">
-      <h1 className="title-card">Create New Account</h1>
+      <h1 className="title-card">New Account</h1>
       <form className="signup-form-container" onSubmit={handleSubmit}>
         <ul>
           {errors.map(error => <li key={error}>{error}</li>)}
         </ul>
-        <label>
-          <h3>Email</h3>
-          <p>required</p>
-        </label>
+
+        <li>
+          <label>
+            <h3>Email</h3>
+            <p>required</p>
+          </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+        </li>
+
+        <li>
+          <label>
+            <h3>Password</h3>
+            <p>required</p>
+          </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e)=>{setPassword(e.target.value)}}
+              required
+            />
+        </li>
+
+        <li>
+          <label htmlFor={confirmPassword}>
+            <h3>Confirm Password</h3>
+            <p>required</p>
+          </label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        <label>
-          <h3>Password</h3>
-          <p>required</p>
-        </label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e)=>{setPassword(e.target.value)}}
-            required
-          />
-        <label htmlFor={confirmPassword}>
-          <h3>Confirm Password</h3>
-          <p>required</p>
-        </label>
-        <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e)=>{setConfirmPassword(e.target.value)}}
-            required
-          />
-          <p>{passwordErrors}</p>
-        <label>
-          <h3>First Name</h3>
-          <p>required</p>
-        </label>
-          <input
-            type="text"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-            required
-          />
-        <label>
-          <h3>Last Name</h3>
-          <p>required</p>
-        </label>
-          <input
-            type="text"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-            required
-          />
-        <button type="submit">Create Account</button>
+              type="password"
+              value={confirmPassword}
+              onChange={(e)=>{setConfirmPassword(e.target.value)}}
+              required
+            />
+          <p className="password-errors">{passwordErrors}</p>
+        </li>
+
+        <li>
+          <label>
+            <h3>First Name</h3>
+            <p>required</p>
+          </label>
+            <input
+              type="text"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+              required
+            />
+        </li>
+        <li>
+          <label>
+            <h3>Last Name</h3>
+            <p>required</p>
+          </label>
+            <input
+              type="text"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+              required
+            />
+        </li>
+        <li>
+          <button type="submit">Create Account</button>
+        </li>
       </form>
     </section>
   );

@@ -12,12 +12,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
+    padding-top: 4em;
     height: 60vh;
-    width: 300px;
+    width:40em;
 
+    li{
+        align-items: center;
+        list-style-type: none;
+    }
+
+    li:last-child{
+        margin-top: 2em;
+    }
     label{
-        padding: 10px;
+        padding: 10px 0px;
         display: flex;
         justify-content: space-between;
     }
@@ -26,9 +35,24 @@
         width: fit-content;
     }
 
+    input{
+        height: 4em;
+        width: 50em;
+        border: 1px solid rgb(232, 231, 231);
+        background-color: rgb(241, 241, 241);
+    }
+
     input:focus{
         outline:none;
-        border-color:aquamarine;
-        box-shadow: 0 0 10px aquamarine;
+        border-color:rgb(185, 255, 232);
+        box-shadow: 0 0 10px rgb(185, 255, 232);
+    }
+
+    :last-child{
+        align-items: start;
+    }
+
+    .password-errors{
+        color:red;
     }
 }

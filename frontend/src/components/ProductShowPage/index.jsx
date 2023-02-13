@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams,useLocation } from "react-router";
+import { useParams,useLocation, Redirect, useHistory } from "react-router";
 import { createItem } from "../../store/cartItemsReducer";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import { getItem, updateItem} from "../../store/cartItemsReducer";
@@ -15,6 +15,7 @@ import ProductShowSwiper from "../ProductShowSwiper";
 
 export default function ProductShowPage(){
     const dispatch = useDispatch();
+    const history = useHistory();
     const {productName} = useParams();
     const product = useSelector(getProduct(productName))
     const {user} = useSelector(state=>state.session)
@@ -114,7 +115,8 @@ export default function ProductShowPage(){
             alert("item added to cart");
         }
         else {
-            alert("Need to Sign In first")
+            alert("Must sign-in first to add to cart")
+            history.push(`/login`)
         }
     }
 
