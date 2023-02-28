@@ -26,10 +26,11 @@ function Navigation() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    debugger
     if (searchValue === "Search for Item"){
       history.push("/search/NO INPUT")
     } else {
-      setSearchValue("Search for Item")
+      setSearchValue("")
       history.push(`/search/${searchValue}`)
     }
 
