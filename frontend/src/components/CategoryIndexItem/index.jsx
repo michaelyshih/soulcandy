@@ -9,8 +9,10 @@ function parseColor (color) {
 
 export default function CategoryIndexitem ({product}) {
 
+    // setting color as first image by default
     const [selectedColor, setSelectedColor] = useState(product.color.split(",")[0])
 
+    //looking through all photos in product to find icons
     const photos = Object.fromEntries(Object.entries(product.photos).filter(([key])=>key.includes("i.jpg")))
 
     return (

@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams,useLocation, Redirect, useHistory } from "react-router";
-import { createItem } from "../../store/cartItemsReducer";
+import { useParams,useLocation, useHistory } from "react-router";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
-import { getItem, updateItem} from "../../store/cartItemsReducer";
+import { getItem, updateItem, createItem} from "../../store/cartItemsReducer";
 import  Reviews from '../Reviews';
 import "./ProductShowPage.scss"
 import { fetchReviews, getReviews } from "../../store/reviewsReducer";
@@ -20,9 +18,7 @@ export default function ProductShowPage(){
     const product = useSelector(getProduct(productName))
     const {user} = useSelector(state=>state.session)
     const reviews = useSelector(getReviews);
-
     const location = useLocation();
-
     const preSelectedColor = location.state ? location.state.selectedColor : {}
     const colorArray = [];
     const [selectedColor, setSelectedColor] = useState(preSelectedColor)
@@ -50,6 +46,8 @@ export default function ProductShowPage(){
 
 
     let colorKeys = {}
+
+    // parsing color string into file naming convention
     const parseColor = (color) =>{
         return color.toLowerCase().split(" ").join(".").split("/").join(".")
     }
@@ -119,6 +117,7 @@ export default function ProductShowPage(){
         }
     }
 
+    // default color set to parsed selectedColor, if none passed in use first
     let parsedColor
     if (Object.keys(selectedColor).length === 0){
         setSelectedColor(colorArray[0])
@@ -162,9 +161,7 @@ export default function ProductShowPage(){
                                     onClick={()=>{setSelectedColor(color)}}
                                     className= {`btn ${selectedColor === color ? 'btn-success' : null} color-selector`}
                                     >
-                                        <span id="color-circle">
-                                            {console.log(parsedColor)}
-                                        </span>
+                                        <span id="color-circle"/>
                                         {color}
                                 </button>
                                 )
