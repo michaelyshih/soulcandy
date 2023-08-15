@@ -11,20 +11,21 @@ export default function CartIndexItem({item}){
 
     const handleAmount = (e) =>{
         e.preventDefault();
-        if (e.target.value === undefined){
-            setNewAmount("")
+        console.log(e.target.value)
+        if (e.target.value === ""){
+            setNewAmount(1)
         }
-        setNewAmount(e.target.value)
+        setNewAmount(parseInt(e.target.value))
     }
 
     useEffect(()=>{
-        if(item.amount !== newAmount && newAmount !== '0' && newAmount !== undefined){
+        if(item.amount !== newAmount && newAmount > 0){
             const newCartItem = {
                 ...item,
                 amount: newAmount
             }
             dispatch(updateItem(newCartItem))
-        }else if (newAmount === "0"){
+        }else if (newAmount <= 0){
             dispatch(deleteItem(item.id))
         }
     },[newAmount])
@@ -64,7 +65,7 @@ export default function CartIndexItem({item}){
                 <input type="number" value={newAmount} onChange={handleAmount}/>
             </td>
             <td>
-                {`$${(item.price * newAmount).toFixed(2)}`}
+                {item.amount > 0 ? `$${(item.price * item.amount).toFixed(2)}` : `$0.00`}
             </td>
         </tr>
     )

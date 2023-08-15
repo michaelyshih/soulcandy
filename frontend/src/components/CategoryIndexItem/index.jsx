@@ -37,10 +37,10 @@ export default function CategoryIndexitem ({product}) {
                             state:{selectedColor:selectedColor}
                             }}
                             className="product-link">
-                            <img className="color-img"
-                            src={photos[parseColor(color)]}
-                            onMouseOver={()=>setSelectedColor(color)}
-                            alt="" />
+                                <img className="color-img"
+                                    src={photos[parseColor(color)]}
+                                    onMouseOver={()=>setSelectedColor(color)}
+                                    alt="" />
                         </Link>
 
                     </li>

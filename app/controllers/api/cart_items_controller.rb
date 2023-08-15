@@ -8,8 +8,8 @@ class Api::CartItemsController < ApplicationController
         if @cart_item.save
             render "api/cart_items/show"
         else
-            # @messages = @cart_item.errors.full_messages
-            # render "api/errors/internal_server_error"
+            @messages = @cart_item.errors.full_messages
+            render "api/errors/internal_server_error"
         end
     end
 

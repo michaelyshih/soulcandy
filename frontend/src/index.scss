@@ -24,6 +24,7 @@ h1 {
 
 }
 
+// version 1
 button{
     position: relative;
     overflow: hidden;
@@ -32,7 +33,6 @@ button{
     background-color:#383838;
     color: white;
     border-width: 1px;
-
 }
 
 button:hover{
@@ -42,3 +42,32 @@ button:hover{
 button::after{
     background-color: #2c2c2c;
 }
+
+
+// version 2
+// button {
+//     position: relative;
+//     padding: 15px;
+//     font-family: poppins;
+//     font-size: 20px;
+//     cursor: pointer;
+//     background: transparent;
+//     border: 3px solid #0099ff;
+//     overflow: hidden;
+// }
+// button:before{
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 60%;
+//     background-color: #0099ff;
+//     z-index: -1;
+//     transform: translateX(-500px) rotate(50deg) ;
+//     transition: 1.5s;
+// }
+
+// button:hover::before{
+//     transform: translateX(0px) rotate(50deg) ;
+// }
