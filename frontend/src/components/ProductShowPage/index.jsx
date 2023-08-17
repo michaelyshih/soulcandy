@@ -48,6 +48,7 @@ export default function ProductShowPage(){
     let colorKeys = {}
 
     // parsing color string into file naming convention
+    //look into regex to shorten this 
     const parseColor = (color) =>{
         return color.toLowerCase().split(" ").join(".").split("/").join(".")
     }
