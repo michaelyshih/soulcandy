@@ -48,7 +48,7 @@ export default function ProductShowPage(){
     let colorKeys = {}
 
     // parsing color string into file naming convention
-    //look into regex to shorten this 
+    //look into regex to shorten this
     const parseColor = (color) =>{
         return color.toLowerCase().split(" ").join(".").split("/").join(".")
     }
@@ -104,14 +104,14 @@ export default function ProductShowPage(){
                 fullname: product.fullname
             }
             dispatch(createItem(newCartItem))
-            alert("item added to cart");
+            // alert("item added to cart");
         } else if (cartItem){
             const newCartItem = {
                 ...cartItem,
                 amount: cartItem.amount + 1
             }
             dispatch(updateItem(newCartItem))
-            alert("item added to cart");
+            // alert("item added to cart");
         }
         else {
             history.push(`/login`)
