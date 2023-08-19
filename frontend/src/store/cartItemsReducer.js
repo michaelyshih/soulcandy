@@ -35,7 +35,16 @@ export const getItem = (productName, selectedColor) => (state) => {
     } else {
         return null
     }
+}
 
+export const getTotalCartCount = (state) => {
+    if (state.cart_items){
+         return Object.values(state.cart_items).reduce((acc, cart_item) => {
+           return acc + cart_item.amount
+         },0)
+    }else{
+        return 0
+    }
 }
 
 // export const fetchItem = (product_id) => async (dispatch) => {

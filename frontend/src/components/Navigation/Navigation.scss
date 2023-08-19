@@ -160,3 +160,19 @@ a, a:hover, a:focus, a:active {
     border-radius: 10px;
     width: 5em;
 }
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 8px;
+  right: 2px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 11px;
+}
