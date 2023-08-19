@@ -21,7 +21,7 @@ export default function CategorySearch(){
     const nonFound = () => {
         if  (Object.keys(products).length === 0){
             return (
-                <h1 className='title-card'>No Results Found</h1>
+                <h2 className='title-card'>No Results Found</h2>
             )
         }
     }
