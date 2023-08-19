@@ -5,6 +5,9 @@
     color: white;
     z-index: 2;
     height: auto;
+    > *{
+        padding: 10
+    }
 }
 
 
@@ -32,6 +35,9 @@
 
     > * {
         padding: 10px;
+    }
+    :last-child{
+        margin-top: 10px;
     }
 
 }
@@ -61,5 +67,7 @@
     > *{
         padding: 10px;
     }
+
+
 
 }

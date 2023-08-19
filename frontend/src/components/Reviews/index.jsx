@@ -104,7 +104,7 @@ export default function Review({reviews , productId}) {
                 <p>required</p>
             </label>
             <textarea name="body" id="body" cols="70" rows="10" value={body} onChange={(e)=>setBody(e.target.value)} required></textarea>
-            <button type="Submit">Submit</button>
+            <button className='main-button' type="Submit">Submit</button>
         </form>
         </section>
     )

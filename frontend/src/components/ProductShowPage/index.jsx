@@ -169,7 +169,7 @@ export default function ProductShowPage(){
                             })}
                         </div>
 
-                        <button className="add-to-cart" onClick={handleCart}>Add item to cart</button>
+                        <button className="main-button" onClick={handleCart}>Add to cart</button>
                     </div>
                 </div>
 
