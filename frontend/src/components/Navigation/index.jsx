@@ -1,18 +1,15 @@
 
-import React, { useEffect } from 'react';
-import { NavLink, Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.scss';
-import { useState } from 'react';
-import cartItemsReducer, { getItems } from '../../store/cartItemsReducer';
 import { getTotalCartCount } from '../../store/cartItemsReducer';
+import SearchBar from '../SearchBar';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
   const cartLength = useSelector(getTotalCartCount)
-  const [searchValue,setSearchValue] = useState();
-  const history = useHistory();
 
   let sessionLinks;
   if (sessionUser) {
@@ -25,32 +22,6 @@ function Navigation() {
         <NavLink to="/login"><i id="account" className="fa-regular fa-user"></i></NavLink>
       </>
     );
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    debugger
-    if (searchValue === "Search for Item"){
-      history.push("/search/NO INPUT")
-    } else {
-      setSearchValue("")
-      history.push(`/search/${searchValue}`)
-    }
-
-  }
-
-  // const handleLeave = (e) =>{
-    // e.preventDefault();
-    // if (searchValue === "") {
-    //   setSearchValue("Search for Item")
-    // }
-  // }
-
-  const handleFocus = (e) =>{
-    e.preventDefault();
-    if (searchValue === "Search for Item") {
-      setSearchValue("")
-    }
   }
 
   return (
@@ -128,20 +99,7 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              onFocus={handleFocus}
-              // onBlur={handleLeave}
-              placeholder={'Search for Item'}
-            />
-
-            <button type="submit" className="search-button">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form>
+              <SearchBar/>
         </li>
       </ul>
     </nav>
