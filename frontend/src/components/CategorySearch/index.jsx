@@ -9,14 +9,13 @@ import "./CategorySearch.scss"
 export default function CategorySearch(){
     const {query} = useParams();
     const dispatch = useDispatch();
+    const products = useSelector(getProducts);
 
     let titleCard = `SEARCH RESULTS FOR '${query}'`
 
-    useEffect(()=>{
-        dispatch(fetchProductsBySearch(query))
-    },[query])
-
-    const products = useSelector(getProducts);
+    // useEffect(()=>{
+    //     dispatch(fetchProductsBySearch(query))
+    // },[query])
 
     const nonFound = () => {
         if  (Object.keys(products).length === 0){

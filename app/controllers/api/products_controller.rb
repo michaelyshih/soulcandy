@@ -49,7 +49,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def search
-    @products ||= Product.where("details ILIKE ?", "%#{params[:query]}%")
+    @products ||= Product.where("fullname ILIKE ?", "%#{params[:query]}%")
     if (@products.empty?)
       @products ||= Product.all
     end

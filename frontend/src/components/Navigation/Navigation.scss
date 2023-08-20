@@ -126,16 +126,9 @@ a, a:hover, a:focus, a:active {
     justify-content: space-around;
     align-items: center;
     width: auto;
-    *{
+    > *{
         padding: 5px;
     }
-}
-
-.search-button{
-    height: 3em;
-    width: 5em;
-    margin: 0px 2em;
-    border-radius: 20px;
 }
 
 .profile-dropdown{
