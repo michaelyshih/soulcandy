@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import './SearchResults.scss'
 
-export default function SearchResults({ searchResults }) {
+export default function SearchResults({ searchResults, clearSubmit }) {
 
-    console.log(searchResults)
+    // console.log(searchResults)
 
   return (
     <section className="search-results">
@@ -14,6 +14,7 @@ export default function SearchResults({ searchResults }) {
             to={`/products/${product.name}`}
             key={id}
             className="search-result"
+            onClick={(e) => { clearSubmit() }}
           >{product.fullname}</Link>
         )
       })}

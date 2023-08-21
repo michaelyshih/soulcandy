@@ -9,13 +9,17 @@
     max-height: 100px;
     overflow-y: auto;
     color: black;
-    padding-right: 10px;
+    // padding-left: 10px;
     position:absolute;
     top: 0;
 
     .search-result{
-        padding: 10px 10px;
+        padding: 10px;
         font-size: small;
+    }
+
+    .search-result:hover{
+      background-color: #efefef;
     }
 }
 

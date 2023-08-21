@@ -19,10 +19,15 @@ export default function SearchBar({}) {
       setLimitProducts(products.slice(0,5))
      },[products])
 
+    const clearSubmit = () => {
+      setSearchValue("")
+      setLimitProducts([])
+     }
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSearchValue("")
-        setLimitProducts([])
+        clearSubmit()
         history.push(`/search/${searchValue}`)
 
     }
@@ -43,7 +48,7 @@ export default function SearchBar({}) {
             // onBlur={handleLeave}
             placeholder={'Search for Item'}
           />
-          <SearchResults searchResults={limitProducts} />
+          <SearchResults searchResults={limitProducts} clearSubmit={clearSubmit} />
         </div>
         <button type="submit" className="search-button">
           <i className="fa-solid fa-magnifying-glass"></i>
