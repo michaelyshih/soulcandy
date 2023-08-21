@@ -13,9 +13,9 @@ export default function CategorySearch(){
 
     let titleCard = `SEARCH RESULTS FOR '${query}'`
 
-    // useEffect(()=>{
-    //     dispatch(fetchProductsBySearch(query))
-    // },[query])
+    useEffect(()=>{
+        dispatch(fetchProductsBySearch(query))
+    },[query])
 
     const nonFound = () => {
         if  (Object.keys(products).length === 0){

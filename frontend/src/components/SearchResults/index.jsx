@@ -3,8 +3,6 @@ import './SearchResults.scss'
 
 export default function SearchResults({ searchResults, clearSubmit }) {
 
-    // console.log(searchResults)
-
   return (
     <section className="search-results">
       {searchResults?.map((product, id) => {
