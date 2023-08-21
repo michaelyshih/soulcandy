@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import './SearchBar.scss'
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, fetchProductsBySearch, getProduct, getProducts } from "../../store/productsReducer";
+import SearchResults from "../SearchResults";
 
 export default function SearchBar({}) {
 
@@ -48,11 +49,7 @@ export default function SearchBar({}) {
             // onBlur={handleLeave}
             placeholder={'Search for Item'}
           />
-          <section className="search-results">{
-            limitedProducts.empty?? limitedProducts?.map((productName) => {
-                return productName
-             })
-          }</section>
+          <SearchResults searchResults={limitedProducts}/>
         </div>
         <button type="submit" className="search-button">
           <i className="fa-solid fa-magnifying-glass"></i>
