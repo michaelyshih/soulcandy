@@ -1,15 +1,22 @@
+import { Link } from 'react-router-dom'
 import './SearchResults.scss'
 
-export default function SearchResults({searchResults}) {
+export default function SearchResults({ searchResults }) {
 
-        console.log(searchResults)
+    console.log(searchResults)
 
+  return (
+    <section className="search-results">
+      {searchResults?.map((product, id) => {
+        // return <a href='' className="search-result" key={id}>{productName}</a>
         return (
-          <section className="search-results">
-            {searchResults?.map((productName, id) => {
-                return <li key={id}>{productName}</li>
-              })}
-          </section>
+          <Link
+            to={`/products/${product.name}`}
+            key={id}
+            className="search-result"
+          >{product.fullname}</Link>
         )
-
+      })}
+    </section>
+  )
 }

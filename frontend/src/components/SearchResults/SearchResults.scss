@@ -9,14 +9,13 @@
     max-height: 100px;
     overflow-y: auto;
     color: black;
-
-    padding-left: 10px;
+    padding-right: 10px;
     position:absolute;
     top: 0;
 
-
-    li{
-
+    .search-result{
+        padding: 10px 10px;
+        font-size: small;
     }
 }
 
