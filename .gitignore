@@ -32,3 +32,4 @@
 /config/master.key
 
 /public
+/node_modules 
