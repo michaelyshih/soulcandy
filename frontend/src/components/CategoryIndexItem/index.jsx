@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import "./CategoryIndexItem.scss"
 import ImageLoader from "../ImageLoader"
 
+// using regex here rather than splitting and joining would be more efficient
 function parseColor (color) {
     return `${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`
 }

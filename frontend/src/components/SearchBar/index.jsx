@@ -51,6 +51,10 @@ export default function SearchBar({}) {
     //     // dispatch(fetchResults(value))
     //  }
 
+    const handleLeave = (e) => {
+      clearSubmit()
+     }
+
     return (
       <form className="search-bar-container" onSubmit={handleSubmit}>
         <div className="input-wrapper">
@@ -59,7 +63,7 @@ export default function SearchBar({}) {
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             // onFocus={handleFocus}
-            // onBlur={handleLeave}
+            onBlur={handleLeave}
             placeholder={'Search for Item'}
           />
           <SearchResults searchResults={limitProducts} clearSubmit={clearSubmit} />
