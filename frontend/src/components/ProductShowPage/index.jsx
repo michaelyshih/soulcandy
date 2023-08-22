@@ -8,6 +8,7 @@ import "./ProductShowPage.scss"
 import { fetchReviews, getReviews } from "../../store/reviewsReducer";
 import ReactStars from "react-rating-stars-component"
 import ProductShowSwiper from "../ProductShowSwiper";
+import parseColor from "../../util/parseColor";
 
 
 
@@ -49,10 +50,12 @@ export default function ProductShowPage(){
 
     // parsing color string into file naming convention
     //look into regex to shorten this
-    const parseColor = (color) =>{
-        return color.toLowerCase().split(" ").join(".").split("/").join(".")
-    }
+    // const parseColor = (color) =>{
+    //     // return `${color.replace(/[ \/]/g, '.').toLowerCase()}.i.jpg`
+    //     return color.toLowerCase().split(" ").join(".").split("/").join(".")
+    // }
 
+    // getting colors from the product obj, 
     product.color.split(",").map(color =>{
         const colorTag = parseColor(color)
         if (!colorArray.includes(color)) colorArray.push(color);
