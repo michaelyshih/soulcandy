@@ -6,6 +6,7 @@ class Api::ProductsController < ApplicationController
       @products = Product.all
     else
       case params[:category]
+
       when "gaming"
         case
         when params[:subcategory] === 'accessory'
@@ -41,6 +42,7 @@ class Api::ProductsController < ApplicationController
       when "accessory"
           @products ||= Product.where("accessory")
       end
+      
     end
   end
 
