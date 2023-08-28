@@ -1,7 +1,6 @@
 .footer{
     display: flex;
-    align-items:center;
-    position:sticky;
+    align-items: center;
     justify-content: flex-end;
     font-size: 30px;
     background-color: black;
@@ -9,11 +8,12 @@
     height: 10vh;
     list-style: none;
     color: white;
+    position: relative;
     padding-left: 10px;
     padding-right: 10px;
     z-index: 10;
     overflow: visible;
-    top:100vh;
+    bottom: 0;
 
     *{
         margin: 10px;

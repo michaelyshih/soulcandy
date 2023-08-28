@@ -57,33 +57,28 @@ export default function Review({reviews , productId}) {
       };
 
     const hasReview = () =>{
-        if (!reviews) {
-            return null
-        } else {
-            return (
-                <ul className="review-index">
-                    <h1 className="title-card">REVIEWS</h1>
-                    {reviews.map(review=>{
-                        return (
-                            <li className="review-index-item-container" key={review.id}>
+        if (!reviews) return null
+        return (
+            <ul className="review-index">
+                <h1 className="title-card">REVIEWS</h1>
+                {reviews.map(review=>{
+                    return (
+                        <li className="review-index-item-container" key={review.id}>
 
-                                <Reviewitem
-                                reviewId={review.id}
-                                setBody={setBody}
-                                setName={setName}
-                                setRating={setRating}
-                                ratingsStar={ratingsStar}
-                                setEdittingReview={setEdittingReview}
-                                user={user}
-                                />
-                            </li>
-                            )
-                    })}
-                </ul>
-            )
-        }
-
-    }
+                            <Reviewitem
+                            reviewId={review.id}
+                            setBody={setBody}
+                            setName={setName}
+                            setRating={setRating}
+                            ratingsStar={ratingsStar}
+                            setEdittingReview={setEdittingReview}
+                            user={user}
+                            />
+                        </li>
+                        )
+                })}
+            </ul>
+        )}
 
     return (
         <section className="reviews-container">
@@ -104,7 +99,7 @@ export default function Review({reviews , productId}) {
                 <p>required</p>
             </label>
             <textarea name="body" id="body" cols="70" rows="10" value={body} onChange={(e)=>setBody(e.target.value)} required></textarea>
-            <button type="Submit">Submit</button>
+            <button className='main-button' type="Submit">Submit</button>
         </form>
         </section>
     )

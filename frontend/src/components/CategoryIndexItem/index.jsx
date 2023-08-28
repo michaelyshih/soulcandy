@@ -2,10 +2,12 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import "./CategoryIndexItem.scss"
 import ImageLoader from "../ImageLoader"
-
-function parseColor (color) {
-    return `${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`
-}
+// using regex here rather than splitting and joining would be more efficient
+import parseColor from "../../util/parseColor"
+// function parseColor (color) {
+//     return `${color.replace(/[ \/]/g,".").toLowerCase()}.i.jpg`
+//     // return `${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`
+// }
 
 export default function CategoryIndexitem ({product}) {
 
@@ -25,7 +27,7 @@ export default function CategoryIndexitem ({product}) {
                 className="product-link" >
                 <ImageLoader
                  className="display-img"
-                 src={photos[parseColor(selectedColor)]}
+                 src={photos[`${parseColor(selectedColor)}.i.jpg`]}
                  alt=""
                 />
             </Link>
@@ -38,7 +40,7 @@ export default function CategoryIndexitem ({product}) {
                             }}
                             className="product-link">
                                 <img className="color-img"
-                                    src={photos[parseColor(color)]}
+                                    src={photos[`${parseColor(color)}.i.jpg`]}
                                     onMouseOver={()=>setSelectedColor(color)}
                                     alt="" />
                         </Link>

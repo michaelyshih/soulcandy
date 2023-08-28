@@ -24,9 +24,9 @@ export default function ProductShowSwiper({ images, colorKeys}){
           }}
         modules={[Autoplay, Navigation, Pagination]}
         className="mySwiper">
-            {colorKeys.map(colorKey=>{
+            {colorKeys.map((colorKey , i)=>{
                     return (
-                        <SwiperSlide>
+                        <SwiperSlide key={i}>
                             <img
                             src={`${images[colorKey]}`}
                             alt="" />

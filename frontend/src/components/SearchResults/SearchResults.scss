@@ -1,0 +1,28 @@
+.search-results{
+    width: 15rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 8px #ddd;
+    border-radius: 10px;
+    margin-top: 3rem;
+    max-height: 100px;
+    overflow-y: auto;
+    color: black;
+    // padding-left: 10px;
+    position:absolute;
+    top: 0;
+
+    .search-result{
+        padding: 10px;
+        font-size: small;
+    }
+
+    .search-result:hover{
+      background-color: #efefef;
+    }
+}
+
+.search-results::-webkit-scrollbar{
+  display: none;
+}

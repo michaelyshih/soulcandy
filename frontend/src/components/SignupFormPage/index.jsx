@@ -113,7 +113,7 @@ function SignupFormPage() {
             />
         </li>
         <li>
-          <button type="submit">Create Account</button>
+          <button className="main-button" type="submit">Create Account</button>
         </li>
       </form>
     </section>

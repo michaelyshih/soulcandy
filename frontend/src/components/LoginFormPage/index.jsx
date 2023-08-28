@@ -70,8 +70,8 @@ function LoginFormPage() {
             {errors.map(error => <li key={error}>{error}</li>)}
           </ul>
             <div className='login-button-container'>
-              <button type="submit">Log In</button>
-              <button onClick={handleDemo}>Demo User</button>
+              <button className='main-button' type="submit">Log In</button>
+              <button className='main-button' onClick={handleDemo}>Demo User</button>
             </div>
         </form>
         <div className='create-user-container'>
@@ -87,7 +87,7 @@ function LoginFormPage() {
             <li>Access your order history</li>
             <li>Track new orders</li>
           </div>
-          <Link to="/signup"><button>Create Account</button></Link>
+          <Link to="/signup"><button className='main-button'>Create Account</button></Link>
 
         </div>
       </div>

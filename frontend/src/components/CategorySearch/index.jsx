@@ -9,6 +9,7 @@ import "./CategorySearch.scss"
 export default function CategorySearch(){
     const {query} = useParams();
     const dispatch = useDispatch();
+    const products = useSelector(getProducts);
 
     let titleCard = `SEARCH RESULTS FOR '${query}'`
 
@@ -16,12 +17,10 @@ export default function CategorySearch(){
         dispatch(fetchProductsBySearch(query))
     },[query])
 
-    const products = useSelector(getProducts);
-
     const nonFound = () => {
         if  (Object.keys(products).length === 0){
             return (
-                <h1 className='title-card'>No Results Found</h1>
+                <h2 className='title-card'>No Results Found</h2>
             )
         }
     }

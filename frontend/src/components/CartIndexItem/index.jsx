@@ -11,7 +11,6 @@ export default function CartIndexItem({item}){
 
     const handleAmount = (e) =>{
         e.preventDefault();
-        console.log(e.target.value)
         if (e.target.value === ""){
             setNewAmount(1)
         }
