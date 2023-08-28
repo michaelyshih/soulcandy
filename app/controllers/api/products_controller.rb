@@ -14,7 +14,6 @@ class Api::ProductsController < ApplicationController
     elsif params[:subcategory] != 'undefined'
       query[params[:subcategory]] = true
     end
-    debugger
     @products ||= Product.where(query)
 
   end

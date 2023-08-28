@@ -28,7 +28,7 @@ function Navigation() {
     <nav className="nav-bar">
       <section className="redirection-section">
         <NavLink className="logo" to="/">
-          <img src="./favicon.ico" width="33" alt="logo" />
+          <img src="/favicon.ico" width="33" alt="logo" />
           <h1>SoulCandy</h1>
         </NavLink>
         <section className="nav-shop">
