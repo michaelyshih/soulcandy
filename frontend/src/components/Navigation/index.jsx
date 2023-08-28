@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import ProfileButton from './ProfileButton.jsx';
 import './Navigation.scss';
 import { getTotalCartCount } from '../../store/cartItemsReducer';
 import SearchBar from '../SearchBar';
