@@ -2,12 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import "./CategoryIndexItem.scss"
 import ImageLoader from "../ImageLoader"
-// using regex here rather than splitting and joining would be more efficient
 import parseColor from "../../util/parseColor"
-// function parseColor (color) {
-//     return `${color.replace(/[ \/]/g,".").toLowerCase()}.i.jpg`
-//     // return `${color.toLowerCase().split(" ").join(".").split("/").join(".")}.i.jpg`
-// }
 
 export default function CategoryIndexitem ({product}) {
 

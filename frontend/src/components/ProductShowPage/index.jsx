@@ -25,17 +25,19 @@ export default function ProductShowPage(){
     const [selectedColor, setSelectedColor] = useState(preSelectedColor)
     const cartItem = useSelector(getItem(productName,selectedColor))
 
-
+    // fetching product
     useEffect(()=>{
         dispatch(fetchProduct(productName))
     },[productName])
 
+    // refetch reviews when a new review is added
     useEffect(()=>{
         if(product && Object.keys(reviews).length !== 0 && (Object.keys(reviews).length !== product.numReviews)){
             dispatch(fetchProduct(productName))
         };
     },[reviews])
 
+    // if there is a product, refetch reviews
     useEffect(()=>{
         if (product){
             dispatch(fetchReviews(product.id))
@@ -43,23 +45,19 @@ export default function ProductShowPage(){
     },[product])
 
 
+    // if component mount without product, photos or detail, return early
     if (!product || !product.photos || !product.details ) return null
-
 
     let colorKeys = {}
 
-    // parsing color string into file naming convention
-    //look into regex to shorten this
-    // const parseColor = (color) =>{
-    //     // return `${color.replace(/[ \/]/g, '.').toLowerCase()}.i.jpg`
-    //     return color.toLowerCase().split(" ").join(".").split("/").join(".")
-    // }
-
-    // getting colors from the product obj, 
+    // differentiate the product colors for product
     product.color.split(",").map(color =>{
         const colorTag = parseColor(color)
+        // construct color into array
         if (!colorArray.includes(color)) colorArray.push(color);
+        // filter photo keys for photos without "i.jpg" of the same color tag
         Object.keys(product.photos).filter(key=>!key.includes("i.jpg") && key.includes(colorTag)).map( key =>{
+            // if color key does not exist, create a new array, else append to existing array
             if (!colorKeys[color]){
                 colorKeys[color] = [key]
             } else {
@@ -67,11 +65,13 @@ export default function ProductShowPage(){
             }
             return key ;
         })
+        // concat i.jpg to the end of array for cart tag
         colorKeys[color] = colorKeys[color].concat([`${colorTag}.i.jpg`])
         return color;
     });
 
     let details = {}
+    //  inserting breaks after every detail object
     product.details.split("\n      ").map((detail,i)=>{
         switch(i){
             case 0:
@@ -92,6 +92,7 @@ export default function ProductShowPage(){
         return detail
     })
 
+    // handling cart and users
     const handleCart= (e)=>{
         const currColor = colorKeys[selectedColor]
         e.preventDefault();
@@ -131,6 +132,7 @@ export default function ProductShowPage(){
 
     if (Object.keys(selectedColor).length === 0 || !parsedColor) return null;
 
+    // default star
     const ratingsStar = {
         size: 10,
         count: 5,
@@ -161,6 +163,7 @@ export default function ProductShowPage(){
                             colorArray.map((color,i)=>{
                                 return (
                                 <button
+                                // map the color array to color selection buttons
                                     key={`${color + i} button`}
                                     onClick={()=>{setSelectedColor(color)}}
                                     className= {`btn ${selectedColor === color ? 'btn-success' : null} color-selector`}
