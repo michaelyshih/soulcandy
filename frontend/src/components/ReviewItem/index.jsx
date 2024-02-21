@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteReview, getReview } from "../../store/reviewsReducer";
 import "./ReviewItem.scss"
 
-export default function Reviewitem ({user, setRating, setBody, setName, setEdittingReview, reviewId, ratingsStar}){
+export default function Reviewitem ({user, formData, setFormData, setEdittingReview, reviewId, ratingsStar}){
 
     const dispatch = useDispatch();
     const editReview = useSelector(getReview(reviewId))
 
-
     const handleEdit = () => {
-        setBody(editReview.body);
-        setName(editReview.name);
-        setRating(editReview.rating);
+        setFormData({
+            ...formData,
+            body: editReview.body,
+            name: editReview.name,
+            rating: editReview.rating
+        });
         setEdittingReview(editReview);
     }
 
