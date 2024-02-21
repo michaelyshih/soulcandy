@@ -7,40 +7,45 @@ import Reviewitem from "../ReviewItem";
 
 export default function Review({reviews , productId}) {
     const dispatch = useDispatch();
-    const [name, setName] = useState("");
-    const [body, setBody] = useState("");
-    const [rating, setRating] = useState(5);
+    const [formData, setFormData] = useState({
+        name: "",
+        body: "",
+        rating: 5,
+    });
     const [edittingReview, setEdittingReview] = useState();
     const user = useSelector(state=>state.session.user)
+
+    const resetFormData = () => {
+        setFormData({
+            name: "",
+            body: "",
+            rating: 5,
+        })
+        setEdittingReview("")
+    }
 
     const handleSubmit = (e)=>{
         e.preventDefault();
         if (user && !edittingReview){
             const newReview = {
-                name: name,
-                body: body,
-                rating: rating,
+                name: formData.name,
+                body: formData.body,
+                rating: formData.rating,
                 product_id: productId,
                 user_id: user.id
             }
             dispatch(createReview(newReview))
-            setRating("")
-            setBody("")
-            setName("")
-            setEdittingReview("")
+            resetFormData()
 
         } else if (user && (user.id === edittingReview.userId)) {
             const newReview = {
                 ...edittingReview,
-                name: name,
-                body: body,
-                rating: rating,
+                name: formData.name,
+                body: formData.body,
+                rating: formData.rating,
             }
             dispatch(updateReview(newReview))
-            setRating("")
-            setBody("")
-            setName("")
-            setEdittingReview("")
+            resetFormData()
         } else {
             alert("Need to Sign In first")
         }
@@ -67,9 +72,8 @@ export default function Review({reviews , productId}) {
 
                             <Reviewitem
                             reviewId={review.id}
-                            setBody={setBody}
-                            setName={setName}
-                            setRating={setRating}
+                            formData={formData}
+                            setFormData={setFormData}
                             ratingsStar={ratingsStar}
                             setEdittingReview={setEdittingReview}
                             user={user}
@@ -92,13 +96,13 @@ export default function Review({reviews , productId}) {
                 <h3>Title:</h3>
                 <p>required</p>
             </label>
-            <input type="text" id="name" size="70" value={name} onChange={(e)=>setName(e.target.value)} required/>
-            <ReactStars {...ratingsStar} size={40} onChange={setRating}/>
+            <input type="text" id="name" size="70" value={formData.name} onChange={(e)=>setFormData({...formData, name: e.target.value})} required/>
+            <ReactStars {...ratingsStar} size={40} onChange={ (e) => setFormData({...formData, rating: e.target.value})}/>
             <label htmlFor="body">
                 <h3>Review:</h3>
                 <p>required</p>
             </label>
-            <textarea name="body" id="body" cols="70" rows="10" value={body} onChange={(e)=>setBody(e.target.value)} required></textarea>
+            <textarea name="body" id="body" cols="70" rows="10" value={formData.body} onChange={(e)=>setFormData({...formData, body: e.target.value})} required></textarea>
             <button className='main-button' type="Submit">Submit</button>
         </form>
         </section>
