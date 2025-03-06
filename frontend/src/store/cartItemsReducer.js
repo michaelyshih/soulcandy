@@ -68,8 +68,6 @@ export const fetchItems = (userId) => async (dispatch) => {
 
 }
 
-
-
 export const createItem = (item) => async (dispatch) => {
     const res = await csrfFetch(`/api/cart_items/`, {
         method:"POST",

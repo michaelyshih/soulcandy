@@ -98,6 +98,8 @@ GEM
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     debug_inspector (1.1.0)
+    dockerfile-rails (1.7.9)
+      rails (>= 3.0.0)
     erubi (1.11.0)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
@@ -190,6 +192,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   byebug
+  dockerfile-rails (>= 1.7)
   faker
   jbuilder
   pg (~> 1.1)
